@@ -4,8 +4,8 @@ public class HolaMundo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("¡¡¡Hola Mundo, desde Eclipse!!!");
-		System.out.println("Dolores de cabeza JaVa S.A.");
+		System.out.println("Â¡Â¡Â¡Hola Mundo, desde VSC!!!");
+		System.out.println("Dolores de cabeza Java S.A.");
 		
 	}
 	
