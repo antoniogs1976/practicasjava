@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Temperatura",
+            "request": "launch",
+            "mainClass": "tema2.Temperatura",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - OperadorIncremento",
+            "request": "launch",
+            "mainClass": "tema2.OperadorIncremento",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - PruebasOperadores",
+            "request": "launch",
+            "mainClass": "tema2.PruebasOperadores",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - PerimetroCircunferencia",
             "request": "launch",
             "mainClass": "tema2.PerimetroCircunferencia",
