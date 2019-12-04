@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - UsarCirculo",
+            "request": "launch",
+            "mainClass": "tema3.UsarCirculo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Temperatura",
             "request": "launch",
             "mainClass": "tema2.Temperatura",
