@@ -6,7 +6,7 @@ package tema3;
  */
 public class Circulo {
 
-    int x;
-    int y;
-    int radio;
+    public int x;
+    public int y;
+    public int radio;
 }
