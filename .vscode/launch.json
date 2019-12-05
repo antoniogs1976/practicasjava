@@ -2,51 +2,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - UsaCirculo",
+            "name": "CodeLens (Launch) - UsandoVehiculos",
+            "request": "launch",
+            "mainClass": "tema3.UsandoVehiculos",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - UsandoVehiculos",
             "request": "launch",
             "mainClass": "tema2.UsaCirculo",
-            "projectName": "practicasjava_e4483c73"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - UsarCirculo",
-            "request": "launch",
-            "mainClass": "tema3.UsarCirculo",
-            "projectName": "practicasjava_e4483c73"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Temperatura",
-            "request": "launch",
-            "mainClass": "tema2.Temperatura",
-            "projectName": "practicasjava_e4483c73"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - OperadorIncremento",
-            "request": "launch",
-            "mainClass": "tema2.OperadorIncremento",
-            "projectName": "practicasjava_e4483c73"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - PruebasOperadores",
-            "request": "launch",
-            "mainClass": "tema2.PruebasOperadores",
-            "projectName": "practicasjava_e4483c73"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - PerimetroCircunferencia",
-            "request": "launch",
-            "mainClass": "tema2.PerimetroCircunferencia",
-            "projectName": "practicasjava_e4483c73"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - HolaMundo",
-            "request": "launch",
-            "mainClass": "tema2.HolaMundo",
             "projectName": "practicasjava_e4483c73"
         }
     ]
