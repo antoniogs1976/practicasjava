@@ -1,17 +1,62 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - UsandoVehiculos",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-HolaMundo<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.HolaMundo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OperadorIncremento<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.OperadorIncremento",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PerimetroCircunferencia<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.PerimetroCircunferencia",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Temperatura<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.Temperatura",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaCirculo<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.UsaCirculo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsandoVehiculos<practicasjava_e4483c73>",
             "request": "launch",
             "mainClass": "tema3.UsandoVehiculos",
             "projectName": "practicasjava_e4483c73"
         },
         {
             "type": "java",
-            "name": "CodeLens (Launch) - UsandoVehiculos",
+            "name": "Debug (Launch)-UsarCirculo<practicasjava_e4483c73>",
             "request": "launch",
-            "mainClass": "tema2.UsaCirculo",
+            "mainClass": "tema3.UsarCirculo",
             "projectName": "practicasjava_e4483c73"
         }
     ]

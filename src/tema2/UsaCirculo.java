@@ -10,9 +10,9 @@ public class UsaCirculo {
 
     public static void main(String[] args) {
         // Creación de variables
-        Circulo circulo1 = new Circulo();
-        Circulo circulo2 = new Circulo();
-        Circulo circulo1Copia = new Circulo();
+        Circulo circulo1 = new Circulo(1);
+        Circulo circulo2 = new Circulo(1);
+        Circulo circulo1Copia = null;
 
         // Asignar valores a circulo1
         circulo1.x = 2;

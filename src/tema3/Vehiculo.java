@@ -9,8 +9,11 @@ public class Vehiculo {
     double tarifa;
     boolean disponible;
 
-    // METODOS -> Definen el comportamiento de los objetos
+    // MÉTODOS -> Definen el comportamiento de los objetos
     // - Constructores
+    // IMPORTANTE
+    // El orden marcado en el CONSTRUCTOR hay que respetarlo a la hora de asignar
+    // los valores.
     public Vehiculo(String matricula, String marca, String modelo, String color, double tarifa) {
         this.matricula = matricula;
         this.marca = marca;
@@ -53,5 +56,32 @@ public class Vehiculo {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
-    // - OTROS METODOS
+
+    // - OTROS MÉTODOS
+    // Para mostrar los datos del vehículo
+    // Esta le hice yo, pero vamos a usar de abajo, del libro
+    // public void muestraDatos(String nombre) {
+    // System.out.println("--------------------------------------------------------------------------------");
+    // System.out.println("***** " + nombre + " *****");
+    // System.out.println("--------------------------------------------------------------------------------");
+    // System.out.println("Matricula : " + getMatricula());
+    // System.out.println("Marca : " + getMarca());
+    // System.out.println("Modelo : " + getModelo());
+    // System.out.println("Color : " + getColor());
+    // System.out.println("Tarifa : " + getTarifa());
+    // System.out.print("Disponible: ");
+    // if (disponible == true) {
+    // System.out.print("Si\n");
+    // } else {
+    // System.out.print("No\n");
+    // }
+    // System.out.println("================================================================================");
+    // }
+
+    // Método para leer los atributos y escribir en pantalla
+    // PÁGINA 43
+    public String getAtributos() {
+        return "Matrícula: " + this.matricula + "\nModelo: " + this.marca + " " + this.modelo + "\nColor: " + this.color
+                + "\nTarifa: " + this.tarifa + "\nDisponible: " + this.disponible + "\n";
+    }
 }
