@@ -58,26 +58,6 @@ public class Vehiculo {
     }
 
     // - OTROS MÉTODOS
-    // Para mostrar los datos del vehículo
-    // Esta le hice yo, pero vamos a usar de abajo, del libro
-    // public void muestraDatos(String nombre) {
-    // System.out.println("--------------------------------------------------------------------------------");
-    // System.out.println("***** " + nombre + " *****");
-    // System.out.println("--------------------------------------------------------------------------------");
-    // System.out.println("Matricula : " + getMatricula());
-    // System.out.println("Marca : " + getMarca());
-    // System.out.println("Modelo : " + getModelo());
-    // System.out.println("Color : " + getColor());
-    // System.out.println("Tarifa : " + getTarifa());
-    // System.out.print("Disponible: ");
-    // if (disponible == true) {
-    // System.out.print("Si\n");
-    // } else {
-    // System.out.print("No\n");
-    // }
-    // System.out.println("================================================================================");
-    // }
-
     // Método para leer los atributos y escribir en pantalla
     // PÁGINA 43
     public String getAtributos() {
