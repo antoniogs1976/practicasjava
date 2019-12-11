@@ -44,8 +44,12 @@ public class Vehiculo {
         return this.tarifa;
     }
 
-    public boolean getDisponible() {
-        return this.disponible;
+    public String getDisponible() {
+        if (this.disponible == true){
+            return ("Disponible");
+        } else {
+            return ("No disponible");
+        }
     }
 
     // - SETTER -> asigna valores a los ATRIBUTOS
