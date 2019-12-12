@@ -12,9 +12,51 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-ejercicio1<practicasjava_e4483c73>",
+            "name": "Debug (Launch)-Ejercicio01<practicasjava_e4483c73>",
             "request": "launch",
-            "mainClass": "Convesión_Ejercicios_Antiguos.ejercicio1",
+            "mainClass": "ejerciciosconvertidosc.Ejercicio01",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio02<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejerciciosconvertidosc.Ejercicio02",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio03<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejerciciosconvertidosc.Ejercicio03",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio04<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejerciciosconvertidosc.Ejercicio04",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio05<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejerciciosconvertidosc.Ejercicio05",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio06<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejerciciosconvertidosc.Ejercicio06",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio07<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejerciciosconvertidosc.Ejercicio07",
             "projectName": "practicasjava_e4483c73"
         },
         {
@@ -68,6 +110,13 @@
         },
         {
             "type": "java",
+            "name": "Debug (Launch)-UsaSobrecarga<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.UsaSobrecarga",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch)-UsandoVehiculos<practicasjava_e4483c73>",
             "request": "launch",
             "mainClass": "tema3.UsandoVehiculos",
@@ -78,6 +127,20 @@
             "name": "Debug (Launch)-UsarCirculo<practicasjava_e4483c73>",
             "request": "launch",
             "mainClass": "tema3.UsarCirculo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-VariableLocal<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.VariableLocal",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MisVehiculos<practicasjava_e4483c73>(1)",
+            "request": "launch",
+            "mainClass": "tema4.MisVehiculos",
             "projectName": "practicasjava_e4483c73"
         }
     ]
