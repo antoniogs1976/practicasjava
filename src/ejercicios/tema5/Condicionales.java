@@ -118,5 +118,33 @@ public class Condicionales {
         } else if ((hora.getHour() >= 14) && (hora.getHour() <= 20)) {
             escribir("Buenas tardes");
         }
+        
+        // Prueba STrings
+        String cosa1 = "hola1";
+        String cosa2 = "hola1";
+        escribir("Comparar 2 Strings con == en un if:");
+        if (cosa1 == cosa2){
+            escribir("son iguales");
+        } else {
+            escribir("no son iguales");
+        }
+        //
+        escribir("Comparar con equals");
+        if (cosa1.equals(cosa2)){
+            escribir("son iguales");
+        } else {
+            escribir("no son iguales");
+        }
+        escribir("**********");
+        // creamos otras dos variables String en forma de objeto
+        String cosa11 = new String("cosa");
+        String cosa22 = new String("cosa");
+        // Al crearlos como objeto, con == no se pueden comprar
+        // comparar con ==
+        if (cosa11 == cosa22){
+            escribir("son iguales");
+        } else {
+            escribir("no son iguales");
+        }
     }
 }
