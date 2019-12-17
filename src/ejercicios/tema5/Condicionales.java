@@ -115,15 +115,8 @@ public class Condicionales {
         // de 14:00 a 20:00 - buenas tardes
         if ((hora.getHour() >= 8) && ((hora.getHour() <= 14) && (hora.getMinute() == 0))) {
             escribir("Buenos días");
-        } else if (((hora.getHour() >= 14) && (hora.getMinute() != 0)) && ((hora.getHour() <= 20))) {
-            if (hora.getMinute() == 0) {
-                escribir("Buenas tardes");
-            } else {
-                escribir("Buenas noches");
-            }
-            escribir("Buenas noches");
+        } else if ((hora.getHour() >= 14) && (hora.getHour() <= 20)) {
+            escribir("Buenas tardes");
         }
-        escribir(hora.now().toString());
-        System.out.println(hora.getMinute());
     }
 }
