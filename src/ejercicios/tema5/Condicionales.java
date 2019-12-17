@@ -146,5 +146,16 @@ public class Condicionales {
         } else {
             escribir("no son iguales");
         }
-    }
+        //
+        if (cosa11.toString() == cosa22.toString())
+            escribir("con toString, son iguales");
+        else
+            escribir("con toString, no son iguales");
+            //
+        escribir(cosa11.toString()+" "+cosa22.toString());
+        if (cosa1.toString() == cosa2.toString())
+            escribir("con to-string en cosa1-2 si son iguales");
+        else
+            escribir("con to-string en cosa1-2 no son iguales");
+    }   
 }
