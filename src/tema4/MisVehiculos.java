@@ -64,5 +64,11 @@ public class MisVehiculos {
         Deportivo vacile1 = new Deportivo("0000 AAA", "Ferrari", "F40", "rojo", 350.99, 5000);
         System.out.println("------------------------------------------------------------");
         System.out.println(vacile1.getAtributos());
+
+        if (vehiculo1.equals(vehiculo2)){
+                System.out.println("Los objetos son iguales.");
+        }else{
+                System.out.println("Los objetos no son iguales.");
+        }
     }
 }

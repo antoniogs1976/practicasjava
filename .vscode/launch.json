@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Condicionales",
+            "request": "launch",
+            "mainClass": "ejercicios.tema5.Condicionales",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
