@@ -1,6 +1,6 @@
 package ejercicios.tema5;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
@@ -21,9 +21,10 @@ public class Condicionales {
 
     public static void main(String[] args) {
         // Variables varias
-        int dia;
+        LocalDate dia = LocalDate.now();
         double nota;
         LocalTime hora = LocalTime.now();
+        String txt;
         // 1.- Simple
         // dada una nota, escribir "Aprobado" si es mayo o igual a 5
         // Limpiar pantalla
@@ -48,6 +49,13 @@ public class Condicionales {
         } else {
             escribir("Suspendido");
         }
+        // usando el operador ?:
+        escribir("*---------------------------------------------*");
+        escribir("usando el operador condicional");
+        escribir("La nota es de: " + nota);
+        txt = (nota >= 5) ? "Aprobado" : "Suspendido";
+        escribir(txt);
+
         // 3.- Aninada
         // Dada una nota, escribir:
         // 10: matricula de honor
@@ -81,9 +89,8 @@ public class Condicionales {
         // letras
         escribir("*---------------------------------------------*");
         escribir("Comparación múltiple (switch)");
-        dia = (int) Math.round(Math.random() * 7);
-        escribir("El valor del día de la semana es: " + dia);
-        switch (dia) {
+        escribir("El valor del día de la semana es: " + dia.getDayOfWeek().getValue());
+        switch (dia.getDayOfWeek().getValue()) {
         case 0:
             escribir("domingo");
             break;
@@ -113,49 +120,25 @@ public class Condicionales {
         // de 20:01 hasta las 7:59 - Buenas noches
         // de 8:00 a 13:59 - Buenos días
         // de 14:00 a 20:00 - buenas tardes
-        if ((hora.getHour() >= 8) && ((hora.getHour() <= 14) && (hora.getMinute() == 0))) {
-            escribir("Buenos días");
-        } else if ((hora.getHour() >= 14) && (hora.getHour() <= 20)) {
-            escribir("Buenas tardes");
-        }
-        
-        // Prueba STrings
-        String cosa1 = "hola1";
-        String cosa2 = "hola1";
-        escribir("Comparar 2 Strings con == en un if:");
-        if (cosa1 == cosa2){
-            escribir("son iguales");
+        String saludo1 = "Buenos días";
+        String saludo2 = "Buenas tardes";
+        String saludo3 = "Buenas noches";
+        // 0 (incluído) a 8 (excluído) Buenas noches
+        // 8 (incluído) a 14 (excluído) Buenos días
+        // 14 (incluído) a 20 (incluído) Buenas tardes
+        // 20 (excluído) a 24 (excluído) Buenas noches
+        escribir("*---------------------------------------------*");
+        escribir("Saludar según la franja horaria:");
+        if ((hora.getHour() >= 0) && (hora.getHour() < 24)) {
+            if ((hora.getHour() >= 8) && (hora.getHour() < 14)) {
+                escribir("La hora es " + LocalTime.now() + " - " + saludo1);
+            } else if ((hora.getHour() >= 14) && (hora.getHour() <= 20)) {
+                escribir("La hora es " + LocalTime.now() + " - " + saludo2);
+            } else {
+                escribir("La hora es " + LocalTime.now() + " - " + saludo3);
+            }
         } else {
-            escribir("no son iguales");
+            escribir("Error: hora no válida.");
         }
-        //
-        escribir("Comparar con equals");
-        if (cosa1.equals(cosa2)){
-            escribir("son iguales");
-        } else {
-            escribir("no son iguales");
-        }
-        escribir("**********");
-        // creamos otras dos variables String en forma de objeto
-        String cosa11 = new String("cosa");
-        String cosa22 = new String("cosa");
-        // Al crearlos como objeto, con == no se pueden comprar
-        // comparar con ==
-        if (cosa11 == cosa22){
-            escribir("son iguales");
-        } else {
-            escribir("no son iguales");
-        }
-        //
-        if (cosa11.toString() == cosa22.toString())
-            escribir("con toString, son iguales");
-        else
-            escribir("con toString, no son iguales");
-            //
-        escribir(cosa11.toString()+" "+cosa22.toString());
-        if (cosa1.toString() == cosa2.toString())
-            escribir("con to-string en cosa1-2 si son iguales");
-        else
-            escribir("con to-string en cosa1-2 no son iguales");
-    }   
+    }
 }

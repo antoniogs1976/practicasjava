@@ -19,8 +19,4 @@ public class CosasVarias {
         escribe("\033\143");
     }
 
-    public static void main(String[] args) {
-        LocalDateTime cosaCalendario = LocalDateTime.now();
-    }
-
 }
