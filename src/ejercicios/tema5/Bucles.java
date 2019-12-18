@@ -44,7 +44,7 @@ public class Bucles {
                     break;
                 case 2:
                     i=1;
-                    while (i <= 10){
+                    while (i <= multiplicador){
                         escribeLinea(numero + "x" + i + "=" + (numero * i));
                         i++;
                     }
@@ -54,7 +54,7 @@ public class Bucles {
                     do{
                         escribeLinea(numero + "x" + i + "=" + (numero * i));
                         i++;
-                    } while (i <= 10);
+                    } while (i <= multiplicador);
 
             } // fin del switch
             escribeLinea("*--------------------------------------------------------------------------------*");
