@@ -1,7 +1,5 @@
 package ejercicios.tema5;
 
-import java.time.LocalDateTime;
-
 /**
  * CosasVarias
  */

@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ejercicio04",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio04"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Condicionales",
             "request": "launch",
             "mainClass": "ejercicios.tema5.Condicionales",
