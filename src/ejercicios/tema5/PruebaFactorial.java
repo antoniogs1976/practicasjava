@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Factorial
  */
-public class Factorial {
+public class PruebaFactorial {
 
     public static void escribeLinea(String texto) {
         System.out.println(texto);
@@ -20,7 +20,7 @@ public class Factorial {
         int numero, i, factorial;
         String tecla = "";
         boolean bucle = true;
-        while (bucle) {
+        while (bucle == true) {
             factorial = 1;
             tecla = "";
             escribeLinea("*--------------------------------------------------------------------------------*");

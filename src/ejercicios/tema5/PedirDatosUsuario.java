@@ -31,7 +31,7 @@ public class PedirDatosUsuario {
         String saludo3 = "Buenas noches";
         boolean bucle = true;
         String tecla = "";
-        while (bucle) {
+        while (bucle == true) {
             limpiarPantalla();
             escribeLinea("*------------------------------------------------------------*");
             escribe("Por favor, introduce una hora (0-23): ");

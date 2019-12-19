@@ -26,7 +26,7 @@ public class TablaMultiplicar {
         int numero, i;
         String tecla = "";
         boolean bucle = true;
-        while (bucle) {
+        while (bucle == true) {
             // limpiarPantalla();
             escribeLinea("*--------------------------------------------------------------------------------*");
             escribe("* Introduce un número para ver su tabla de multiplicar: ");
