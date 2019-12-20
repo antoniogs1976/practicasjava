@@ -1,5 +1,6 @@
-package ejercicios.tema5;
+package tema5;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -7,6 +8,10 @@ import java.util.Scanner;
  * 
  */
 public class Adivina {
+    public static int aleatorio(int maximo){
+        Random cosa = new Random();
+        return cosa.nextInt(maximo)+1;
+    }
 
     public static void escribeLinea(String texto) {
         System.out.println(texto);
@@ -26,13 +31,9 @@ public class Adivina {
         while (bucle) {
             opcion = 0;
             contador = 0;
-            // inicializar el número
-            //do{
-                secreto = (int) ((Math.random() * 99)+1);
-            //}while(secreto == 0);
-            //-----------------
+            secreto = aleatorio(100);
             do{
-                escribeLinea("Selecciona Opción:\n1.- Jugar sin intentos\n2.- Jugar con 3 intentos máximo");
+                escribeLinea("Selecciona Opción:\n1.- Jugar sin intentos\n2.- Jugar con 3 intentos máximo\n"+secreto);
                 opcion = entrada.nextInt();
             }while (opcion != 1 && opcion !=2);
             switch (opcion) {

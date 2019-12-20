@@ -1,4 +1,4 @@
-package ejercicios.tema5;
+package tema5;
 
 import java.util.Scanner;
 
@@ -34,7 +34,7 @@ public class UsaMatematicas {
             escribe("Introduce un número para calcular su factorial: ");
             numero = entrada.nextInt();
             // usamos el factorial
-            resultado = Matematicas.factorial(numero);
+            resultado = Matematicas.calcularFactorial(numero);
             escribeLinea("- El factorial de " + numero + " es: " + resultado);
             escribeLinea("------------------------------------------------------------");
             do {

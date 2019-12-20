@@ -1,4 +1,4 @@
-package ejercicios.tema5;
+package tema5;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

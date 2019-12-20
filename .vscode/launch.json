@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - UsaMatematicas2",
+            "request": "launch",
+            "mainClass": "tema5.UsaMatematicas2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ejercicio04",
             "request": "launch",
             "mainClass": "ejercicios.ejercicios_antiguos.ejercicio04"
