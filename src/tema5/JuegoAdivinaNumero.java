@@ -18,6 +18,7 @@ public class JuegoAdivinaNumero {
     private static final String msgMayor = " el número es mayor";
     private static final String msgMenor = " el número es menor";
 
+    // Getters y Setters
     public static int getNumeroIntentos() {
         return numeroIntentos;
     }
@@ -67,7 +68,5 @@ public class JuegoAdivinaNumero {
             return numero+msgMenor;
         }
     }
-
     
-
 }
