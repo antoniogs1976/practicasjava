@@ -14,7 +14,9 @@ public class CosasVarias {
     }
 
     public static void limpiarPantalla(){
-        escribe("\033\143");
+        System.out.flush();
+        System.out.print("\033\143");
+        System.out.flush();
     }
 
 }
