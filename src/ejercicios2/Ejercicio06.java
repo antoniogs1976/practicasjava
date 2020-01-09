@@ -23,46 +23,48 @@ public class Ejercicio06 {
         CosasVarias.escribeLinea("------------------------------------------------------------");
         CosasVarias.escribeLinea("-       Mostrar los números que hay entre dos números      -");
         CosasVarias.escribeLinea("------------------------------------------------------------");
-        while(bucle){
-            do{
+        while (bucle) {
+            do {
                 CosasVarias.escribe("Introduce el primer número: ");
                 num1 = entrada.nextInt();
                 CosasVarias.escribe("Introduce el segundo número: ");
                 num2 = entrada.nextInt();
-                if (num1 == num2){
+                if (num1 == num2) {
                     CosasVarias.escribeLinea("Los números deben ser distintos. Vuelve a introducirlos.");
-                } 
+                }
             } while (num1 == num2);
             // Comprobar cual de los dos es el menor
-            if (num1 < num2){
-                CosasVarias.escribeLinea("Los números comprendidos entre "+num1+" y "+num2+" son:");
-                for (int i=num1;i<=num2;i++){
-                    if (i == num2){
-                        CosasVarias.escribeLinea(i+".");
-                    } else{
-                        CosasVarias.escribe(i+", ");
+            if (num1 < num2) {
+                CosasVarias.escribeLinea("Los números comprendidos entre " + num1 + " y " + num2 + " son:");
+                for (int i = num1; i <= num2; i++) {
+                    if (i == num2) {
+                        // para poner un . en el último elemento
+                        CosasVarias.escribeLinea(i + ".");
+                    } else {
+                        CosasVarias.escribe(i + ", ");
                     }
                 }
             } else {
-                CosasVarias.escribeLinea("Los números comprendidos entre "+num2+" y "+num1+" son:");
-                for (int i=num2;i<=num1;i++){
-                    if (i == num1){
-                        CosasVarias.escribeLinea(i+".");
-                    } else{
-                        CosasVarias.escribe(i+", ");
+                CosasVarias.escribeLinea("Los números comprendidos entre " + num2 + " y " + num1 + " son:");
+                for (int i = num2; i <= num1; i++) {
+                    if (i == num1) {
+                        // para poner un . en el último elemento
+                        CosasVarias.escribeLinea(i + ".");
+                    } else {
+                        CosasVarias.escribe(i + ", ");
                     }
                 }
             }
 
             CosasVarias.escribe("¿Desea introducir más números? (S/N): ");
             siOno = entrada.next().charAt(0);
-            if (siOno == 'n' || siOno == 'N'){
+            if (siOno == 'n' || siOno == 'N') {
                 bucle = false;
             } else {
                 bucle = true;
             }
         }
-            // cerrar scanner
-            entrada.close();
+        // cerrar scanner
+        entrada.close();
     }
 }

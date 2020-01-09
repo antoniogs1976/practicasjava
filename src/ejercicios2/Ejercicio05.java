@@ -16,9 +16,8 @@ public class Ejercicio05 {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        String[] meses = {"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre",
-                          "octubre", "noviembre", "diciembre" };
-        String dias;
+        String[] meses = { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" };
+        String dias = "";
         int mes;
         boolean bucle = true;
         char SioNo;
@@ -27,26 +26,28 @@ public class Ejercicio05 {
         CosasVarias.escribeLinea("-                ¿Cuántos días tiene el mes?               -");
         CosasVarias.escribeLinea("------------------------------------------------------------");
         while (bucle) {
-            CosasVarias.escribe("Introduce el número de mes (1-12): ");
-            mes = entrada.nextInt();
-            if (mes < 1 || mes > 12) {
-                CosasVarias.escribeLinea("El número de mes introducido (" + mes + ") no es válido.");
-            } else {
-                // comprobar mes para asignar días
-                // febrero va fijo
-                if (mes == 2){
-                    dias = "28";
-                } else if (mes == 1 || mes == 3 || mes == 5|| mes == 7 || mes == 8 || mes == 10 || mes == 12){
-                    dias = "31";
-                } else {
-                    dias = "30";
+            do{
+                CosasVarias.escribe("Introduce el número de mes (1-12): ");
+                mes = entrada.nextInt();
+                if (mes < 1 || mes > 12) {
+                    CosasVarias.escribeLinea("El número de mes introducido (" + mes + ") no es válido.");
                 }
-                // mostramos los datos
-                CosasVarias.escribeLinea("El mes "+mes+" corresponde a "+meses[mes-1]+" y tiene "+dias+" días.");
+            } while (mes <1 || mes > 12);
+            // comprobar mes para asignar días
+            // febrero va fijo
+            if (mes == 2) {
+                dias = "28";
+            } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+                dias = "31";
+            } else {
+                dias = "30";
             }
+            // mostramos los datos
+            CosasVarias.escribeLinea("El mes " + mes + " corresponde a " + meses[mes - 1] + " y tiene " + dias + " días.");
+            
             CosasVarias.escribe("¿Desea comprobar más meses? (S/N): ");
             SioNo = entrada.next().charAt(0);
-            if (SioNo == 'n' || SioNo == 'N'){
+            if (SioNo == 'n' || SioNo == 'N') {
                 bucle = false;
             } else {
                 bucle = true;
