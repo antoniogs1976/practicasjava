@@ -20,6 +20,7 @@ public class Ejercicio07V2 {
         Scanner entrada = new Scanner(System.in);
         int numero;
         boolean bucle = true;
+        String tipo1 = "", tipo2 = "";
 
         CosasVarias.escribeLinea("------------------------------------------------------------");
         CosasVarias.escribeLinea("-                Identificación de Números                 -");
@@ -32,16 +33,18 @@ public class Ejercicio07V2 {
             } else {
                 // Decimos si es par o impar
                 if (numero % 2 == 0) {
-                    CosasVarias.escribeLinea("El número " + numero + " es par.");
+                    tipo1 = "par ";
                 } else {
-                    CosasVarias.escribeLinea("El número " + numero + " es impar.");
+                    tipo1 = "impar ";
                 }
                 // Decimos si es positivo o negativo
                 if (numero < 0) {
-                    CosasVarias.escribeLinea("El número " + numero + " es negativo.");
+                    tipo2 = "y negativo.";
                 } else {
-                    CosasVarias.escribeLinea("El número " + numero + " es positivo.");
+                    tipo2 = "y positivo.";
                 }
+                // Mostramos el resultado
+                CosasVarias.escribeLinea("El número "+numero+" es "+tipo1+tipo2);
             }
         } while (bucle != false);
         CosasVarias.escribeLinea("bye!");

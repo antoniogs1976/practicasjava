@@ -22,31 +22,39 @@ public class Ejercicio07V3 {
         int numero;
         char siOno;
         boolean bucle = true;
+        String tipo1 = "", tipo2 = "";
 
         CosasVarias.escribeLinea("------------------------------------------------------------");
         CosasVarias.escribeLinea("-                Identificación de Números                 -");
         CosasVarias.escribeLinea("------------------------------------------------------------");
         do {
-            CosasVarias.escribe("Introduce un número (0 para salir): ");
+            CosasVarias.escribe("Introduce un número: ");
             numero = entrada.nextInt();
-            // Decimos si es par o impar
-            if (numero % 2 == 0) {
-                CosasVarias.escribeLinea("El número " + numero + " es par.");
+            // Comprobamos si es cero o no
+            if (numero == 0){
+                CosasVarias.escribeLinea("El número es cero.");
             } else {
-                CosasVarias.escribeLinea("El número " + numero + " es impar.");
+                // Decimos si es par o impar
+                if (numero % 2 == 0) {
+                    tipo1 = "par ";
+                } else {
+                    tipo1 = "impar ";
+                }
+                // Decimos si es positivo o negativo
+                if (numero < 0) {
+                    tipo2 = "y negativo.";
+                } else {
+                    tipo2 = "y positivo.";
+                }
+                // Mostramos el resultado
+                CosasVarias.escribeLinea("El número "+numero+" es "+tipo1+tipo2);
+                // preguntar si se sigue o no se sigue
             }
-            // Decimos si es positivo o negativo
-            if (numero < 0) {
-                CosasVarias.escribeLinea("El número " + numero + " es negativo.");
-            } else {
-                CosasVarias.escribeLinea("El número " + numero + " es positivo.");
-            }
-            // preguntar si se sigue o no se sigue
             CosasVarias.escribe("¿Desea introducir más números? (S/N): ");
             siOno = entrada.next().charAt(0);
-            if (siOno == 'n' || siOno == 'N'){
+            if (siOno == 'n' || siOno == 'N') {
                 bucle = false;
-            } 
+            }
         } while (bucle != false);
         CosasVarias.escribeLinea("bye!");
         entrada.close();
