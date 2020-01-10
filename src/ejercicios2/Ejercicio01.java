@@ -14,10 +14,10 @@ public class Ejercicio01 {
         Scanner entrada = new Scanner(System.in);
         int numero;
         MisClases.limpiarPantalla();
+        MisClases.escribeLinea("------------------------------------------------------------");
+        MisClases.escribeLinea("-                  P A R   O   I M P A R                   -");
+        MisClases.escribeLinea("------------------------------------------------------------");
         do{    
-            MisClases.escribeLinea("------------------------------------------------------------");
-            MisClases.escribeLinea("-                  P A R   O   I M P A R                   -");
-            MisClases.escribeLinea("------------------------------------------------------------");
             MisClases.escribe("Introduce un número (-1 para salir): ");
             numero = entrada.nextInt();
             if (numero == 0){
@@ -28,10 +28,10 @@ public class Ejercicio01 {
                 MisClases.escribeLinea("El número " + numero +" es impar.");
             }
         } while (numero != -1);
-        
 
         // cerrar scanner
         entrada.close();
+        MisClases.escribeLinea("bye!");
     }
 
 }

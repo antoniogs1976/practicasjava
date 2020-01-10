@@ -40,5 +40,6 @@ public class Ejercicio02 {
         }
         // cerrar scanner
         entrada.close();
+        MisClases.escribeLinea("bye!");
     }
 }

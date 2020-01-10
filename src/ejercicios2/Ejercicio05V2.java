@@ -24,12 +24,13 @@ public class Ejercicio05V2 {
         String dias = "";
         int mes;
         boolean bucle = true;
-        char SioNo;
+        char siOno;
 
-        MisClases.escribeLinea("------------------------------------------------------------");
-        MisClases.escribeLinea("-                ¿Cuántos días tiene el mes?               -");
-        MisClases.escribeLinea("------------------------------------------------------------");
         while (bucle) {
+            MisClases.limpiarPantalla();
+            MisClases.escribeLinea("------------------------------------------------------------");
+            MisClases.escribeLinea("-                ¿Cuántos días tiene el mes?               -");
+            MisClases.escribeLinea("------------------------------------------------------------");
             do {
                 MisClases.escribe("Introduce el número de mes (1-12): ");
                 mes = entrada.nextInt();
@@ -91,16 +92,20 @@ public class Ejercicio05V2 {
 
             // Mostramos los datos
             MisClases.escribeLinea("El mes " + mes + " corresponde a " + meses + " y tiene " + dias + " días.");
-            // Comprobamos bucle general
-            MisClases.escribe("¿Desea comprobar más meses? (S/N): ");
-            SioNo = entrada.next().charAt(0);
-            if (SioNo == 'n' || SioNo == 'N') {
-                bucle = false;
-            } else {
-                bucle = true;
-            }
+            
+            // Preguntar si se continúa o no
+            do {
+                MisClases.escribe("¿Desea repetir la operación? (S/N): ");
+                siOno = entrada.next().charAt(0);
+                if (siOno == 'n' || siOno == 'N') {
+                    bucle = false;
+                } else if (siOno == 's' || siOno == 'S') {
+                    bucle = true;
+                }
+            } while (siOno == 's' && siOno == 'S' && siOno == 'n' && siOno == 'N');
         }
         // cerrar scanner
         entrada.close();
+        MisClases.escribeLinea("bye!");
     }
 }

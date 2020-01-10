@@ -36,7 +36,7 @@ public class Ejercicio10 {
             // Recorrer el array actualizando las medias y el total según sea el valor del
             // elemento del array
             for (i = 0; i < numeros.length; i++) {
-                if (numeros[i] == 0){
+                if (numeros[i] == 0) {
                     ceros++;
                 } else if (numeros[i] > 0) {
                     positivos++;
@@ -48,13 +48,17 @@ public class Ejercicio10 {
             MisClases.escribeLinea("Has introducido " + positivos + " números positivos.");
             MisClases.escribeLinea("Has introducido " + negativos + " números negativos.");
             MisClases.escribeLinea("Has introducido " + ceros + " ceros.");
-            
+
             // Preguntar si se continúa o no
-            MisClases.escribe("¿Desea repetir la operación? (S/N): ");
-            siOno = entrada.next().charAt(0);
-            if (siOno == 'n' || siOno == 'N') {
-                bucle = false;
-            }
+            do {
+                MisClases.escribe("¿Desea repetir la operación? (S/N): ");
+                siOno = entrada.next().charAt(0);
+                if (siOno == 'n' || siOno == 'N') {
+                    bucle = false;
+                } else if (siOno == 's' || siOno == 'S') {
+                    bucle = true;
+                }
+            } while (siOno == 's' && siOno == 'S' && siOno == 'n' && siOno == 'N');
         }
         MisClases.escribeLinea("bye!");
         // cerrar el scanner

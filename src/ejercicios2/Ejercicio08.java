@@ -17,7 +17,7 @@ public class Ejercicio08 {
         Scanner entrada = new Scanner(System.in);
         int[] numeros = new int[10];
         int i, total, positivos, negativos;
-        float mediaPositivos = 0, mediaNegativos = 0;
+        float mediaPositivos, mediaNegativos;
         boolean bucle = true;
         char siOno;
 
@@ -58,19 +58,21 @@ public class Ejercicio08 {
                 mediaNegativos = mediaNegativos / negativos;
             }
 
-            //Mostramos los resultados utilizo el formato %.2f para que imprima 2 decimales
-            MisClases.escribeLinea("Media de los números positivos: "+mediaPositivos);
-            MisClases.escribeLinea("Media de los números negativos: "+mediaNegativos);
-            MisClases.escribeLinea("Suma total de los números: "+total);
+            // Mostramos los resultados utilizo el formato %.2f para que imprima 2 decimales
+            MisClases.escribeLinea("Media de los números positivos: " + mediaPositivos);
+            MisClases.escribeLinea("Media de los números negativos: " + mediaNegativos);
+            MisClases.escribeLinea("Suma total de los números: " + total);
 
             // Preguntar si se continúa o no
-            MisClases.escribeLinea("¿Desea repetir la operación? (S/N): ");
-            siOno = entrada.next().charAt(0);
-            if (siOno == 'n' || siOno == 'N') {
-                bucle = false;
-            } else {
-                bucle = true;
-            }
+            do {
+                MisClases.escribe("¿Desea repetir la operación? (S/N): ");
+                siOno = entrada.next().charAt(0);
+                if (siOno == 'n' || siOno == 'N') {
+                    bucle = false;
+                } else if (siOno == 's' || siOno == 'S') {
+                    bucle = true;
+                }
+            } while (siOno == 's' && siOno == 'S' && siOno == 'n' && siOno == 'N');
         }
         MisClases.escribeLinea("bye!");
         // cerrar el scanner

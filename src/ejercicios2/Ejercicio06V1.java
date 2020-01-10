@@ -56,11 +56,16 @@ public class Ejercicio06V1 {
                 }
             }
 
-            MisClases.escribe("¿Desea introducir más números? (S/N): ");
-            siOno = entrada.next().charAt(0);
-            if (siOno == 'n' || siOno == 'N') {
-                bucle = false;
-            }
+            // Preguntar si se continúa o no
+            do {
+                MisClases.escribe("¿Desea repetir la operación? (S/N): ");
+                siOno = entrada.next().charAt(0);
+                if (siOno == 'n' || siOno == 'N') {
+                    bucle = false;
+                } else if (siOno == 's' || siOno == 'S') {
+                    bucle = true;
+                }
+            } while (siOno == 's' && siOno == 'S' && siOno == 'n' && siOno == 'N');
         }
         // cerrar scanner
         entrada.close();

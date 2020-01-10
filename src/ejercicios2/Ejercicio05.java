@@ -16,23 +16,25 @@ public class Ejercicio05 {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        String[] meses = { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" };
+        String[] meses = { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre",
+                "octubre", "noviembre", "diciembre" };
         String dias = "";
         int mes;
         boolean bucle = true;
-        char SioNo;
+        char siOno;
 
-        MisClases.escribeLinea("------------------------------------------------------------");
-        MisClases.escribeLinea("-                ¿Cuántos días tiene el mes?               -");
-        MisClases.escribeLinea("------------------------------------------------------------");
         while (bucle) {
-            do{
+            MisClases.limpiarPantalla();
+            MisClases.escribeLinea("------------------------------------------------------------");
+            MisClases.escribeLinea("-                ¿Cuántos días tiene el mes?               -");
+            MisClases.escribeLinea("------------------------------------------------------------");
+            do {
                 MisClases.escribe("Introduce el número de mes (1-12): ");
                 mes = entrada.nextInt();
                 if (mes < 1 || mes > 12) {
                     MisClases.escribeLinea("El número de mes introducido (" + mes + ") no es válido.");
                 }
-            } while (mes <1 || mes > 12);
+            } while (mes < 1 || mes > 12);
             // comprobar mes para asignar días
             // febrero va fijo
             if (mes == 2) {
@@ -44,16 +46,20 @@ public class Ejercicio05 {
             }
             // mostramos los datos
             MisClases.escribeLinea("El mes " + mes + " corresponde a " + meses[mes - 1] + " y tiene " + dias + " días.");
-            
-            MisClases.escribe("¿Desea comprobar más meses? (S/N): ");
-            SioNo = entrada.next().charAt(0);
-            if (SioNo == 'n' || SioNo == 'N') {
-                bucle = false;
-            } else {
-                bucle = true;
-            }
+
+            // Preguntar si se continúa o no
+            do {
+                MisClases.escribe("¿Desea repetir la operación? (S/N): ");
+                siOno = entrada.next().charAt(0);
+                if (siOno == 'n' || siOno == 'N') {
+                    bucle = false;
+                } else if (siOno == 's' || siOno == 'S') {
+                    bucle = true;
+                }
+            } while (siOno == 's' && siOno == 'S' && siOno == 'n' && siOno == 'N');
         }
         // cerrar scanner
         entrada.close();
+        MisClases.escribeLinea("bye!");
     }
 }

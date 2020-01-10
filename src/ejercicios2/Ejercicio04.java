@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import miscosas.MisClases; 
+import miscosas.MisClases;
 
 /**
  * Ejercicio04
@@ -16,12 +16,13 @@ public class Ejercicio04 {
         Scanner entrada = new Scanner(System.in);
         int HH, MM, SS;
         boolean bucle = true;
-        char SioNo;
+        char siOno;
 
-        MisClases.escribeLinea("------------------------------------------------------------");        
-        MisClases.escribeLinea("-             Horas, Minutos y Segundos válidos            -");        
-        MisClases.escribeLinea("------------------------------------------------------------");        
-        while (bucle){
+        while (bucle) {
+            MisClases.limpiarPantalla();
+            MisClases.escribeLinea("------------------------------------------------------------");
+            MisClases.escribeLinea("-             Horas, Minutos y Segundos válidos            -");
+            MisClases.escribeLinea("------------------------------------------------------------");
             MisClases.escribe("Introduce las horas (HH): ");
             HH = entrada.nextInt();
             MisClases.escribe("Introduce los minutos (MM): ");
@@ -31,22 +32,24 @@ public class Ejercicio04 {
             // Comprobar que los datos son válidos
             // HH debe tener un valor entre 0 y 23
             // MM y SS debe tener un valor entre 0 y 59
-            if ((HH >= 0 && HH <= 23) && (MM >= 0 && MM <= 59) && (SS >= 0 && SS <= 59)){
-                MisClases.escribeLinea("La hora "+HH+":"+MM+":"+SS+" es válida.");
+            if ((HH >= 0 && HH <= 23) && (MM >= 0 && MM <= 59) && (SS >= 0 && SS <= 59)) {
+                MisClases.escribeLinea("La hora " + HH + ":" + MM + ":" + SS + " es válida.");
             } else {
-                MisClases.escribeLinea("La hora "+HH+":"+MM+":"+SS+" no es válida.");
+                MisClases.escribeLinea("La hora " + HH + ":" + MM + ":" + SS + " no es válida.");
             }
-            //
-            MisClases.escribe("¿Desea comprobar más horas? (S/N): ");
-            SioNo = entrada.next().charAt(0);
-            if (SioNo == 'n' || SioNo == 'N'){
-                bucle = false;
-            } else {
-                bucle = true;
-            }
+            // Preguntar si se continúa o no
+            do {
+                MisClases.escribe("¿Desea repetir la operación? (S/N): ");
+                siOno = entrada.next().charAt(0);
+                if (siOno == 'n' || siOno == 'N') {
+                    bucle = false;
+                } else if (siOno == 's' || siOno == 'S') {
+                    bucle = true;
+                }
+            } while (siOno == 's' && siOno == 'S' && siOno == 'n' && siOno == 'N');
         }
-
         // cerrar scanner
         entrada.close();
+        MisClases.escribeLinea("bye!");
     }
 }
