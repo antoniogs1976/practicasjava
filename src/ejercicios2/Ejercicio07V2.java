@@ -31,13 +31,13 @@ public class Ejercicio07V2 {
             if (numero == 0) {
                 bucle = false;
             } else {
-                // Decimos si es par o impar
+                // Comprobar si es par o impar
                 if (numero % 2 == 0) {
                     tipo1 = "par ";
                 } else {
                     tipo1 = "impar ";
                 }
-                // Decimos si es positivo o negativo
+                // Comprobar si es positivo o negativo
                 if (numero < 0) {
                     tipo2 = "y negativo.";
                 } else {

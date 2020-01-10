@@ -7,11 +7,9 @@ import tema5.CosasVarias;
  * Ejercicio06V2
  * 
  * Programa que pida que se introduzcan dos números enteros por teclado y
- * muestre los números desde el menor hasta el mayor de los números
+ * muestre los números desde el matyor hasta el menor de los números
  * introducidos. Los dos números introducidos deben ser distintos. Si son
  * iguales se mostrará un mensaje indicandolo y se vuelven a introducir.
- * 
- * V2: Optimización del código
  * 
  */
 public class Ejercicio06V2 {
@@ -22,9 +20,9 @@ public class Ejercicio06V2 {
         boolean bucle = true;
         char siOno;
 
-        CosasVarias.escribeLinea("------------------------------------------------------------");
-        CosasVarias.escribeLinea("-       Mostrar los números que hay entre dos números      -");
-        CosasVarias.escribeLinea("------------------------------------------------------------");
+        CosasVarias.escribeLinea("------------------------------------------------------------------");
+        CosasVarias.escribeLinea("- Mostrar los números que hay entre dos números de mayor a menor -");
+        CosasVarias.escribeLinea("------------------------------------------------------------------");
         while (bucle) {
             do {
                 CosasVarias.escribe("Introduce el primer número: ");
@@ -46,21 +44,18 @@ public class Ejercicio06V2 {
 
             // Mostrar los datos
             CosasVarias.escribeLinea("Los números comprendidos entre " + num2 + " y " + num1 + " son:");
-            for (int i = min; i <= max; i++) {
-                if (i == max) {
+            for (int i = max; i >= min; i--) {
+                if (i == min) {
                     // para poner un . en el último elemento
                     CosasVarias.escribeLinea(i + ".");
                 } else {
                     CosasVarias.escribe(i + ", ");
                 }
             }
-
             CosasVarias.escribe("¿Desea introducir más números? (S/N): ");
             siOno = entrada.next().charAt(0);
             if (siOno == 'n' || siOno == 'N') {
                 bucle = false;
-            } else {
-                bucle = true;
             }
         }
         // cerrar scanner
