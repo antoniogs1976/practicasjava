@@ -25,7 +25,7 @@ public class Ejercicio07V2 {
         CosasVarias.escribeLinea("------------------------------------------------------------");
         CosasVarias.escribeLinea("-                Identificación de Números                 -");
         CosasVarias.escribeLinea("------------------------------------------------------------");
-        do{
+        do {
             CosasVarias.escribe("Introduce un número (0 para salir): ");
             numero = entrada.nextInt();
             if (numero == 0) {
@@ -44,7 +44,7 @@ public class Ejercicio07V2 {
                     tipo2 = "y positivo.";
                 }
                 // Mostramos el resultado
-                CosasVarias.escribeLinea("El número "+numero+" es "+tipo1+tipo2);
+                CosasVarias.escribeLinea("El número " + numero + " es " + tipo1 + tipo2);
             }
         } while (bucle != false);
         CosasVarias.escribeLinea("bye!");

@@ -31,7 +31,7 @@ public class Ejercicio07V3 {
             CosasVarias.escribe("Introduce un número: ");
             numero = entrada.nextInt();
             // Comprobamos si es cero o no
-            if (numero == 0){
+            if (numero == 0) {
                 CosasVarias.escribeLinea("El número es cero.");
             } else {
                 // Decimos si es par o impar
@@ -47,7 +47,7 @@ public class Ejercicio07V3 {
                     tipo2 = "y positivo.";
                 }
                 // Mostramos el resultado
-                CosasVarias.escribeLinea("El número "+numero+" es "+tipo1+tipo2);
+                CosasVarias.escribeLinea("El número " + numero + " es " + tipo1 + tipo2);
                 // preguntar si se sigue o no se sigue
             }
             CosasVarias.escribe("¿Desea introducir más números? (S/N): ");

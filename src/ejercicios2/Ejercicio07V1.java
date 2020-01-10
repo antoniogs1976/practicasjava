@@ -20,7 +20,7 @@ public class Ejercicio07V1 {
         Scanner entrada = new Scanner(System.in);
         int numero;
         boolean bucle = true;
-        String tipo1="", tipo2="";
+        String tipo1 = "", tipo2 = "";
 
         CosasVarias.escribeLinea("------------------------------------------------------------");
         CosasVarias.escribeLinea("-                Identificación de Números                 -");
@@ -44,7 +44,7 @@ public class Ejercicio07V1 {
                     tipo2 = "y positivo.";
                 }
                 // Mostramos el resultado
-                CosasVarias.escribeLinea("El número "+numero+" es "+tipo1+tipo2);
+                CosasVarias.escribeLinea("El número " + numero + " es " + tipo1 + tipo2);
             }
         }
         CosasVarias.escribeLinea("bye!");
