@@ -19,14 +19,14 @@ public class Ejercicio09 {
         MisClases.escribeLinea("---------------------------------------------------------------------------");
         MisClases.escribeLinea("-                 Array con los 20 primeros números pares                 -");
         MisClases.escribeLinea("---------------------------------------------------------------------------");
-        for(i=0;i<pares.length;i++){
-            pares[i] = (i+1)*2;
+        for (i = 0; i < pares.length; i++) {
+            pares[i] = (i + 1) * 2;
         }
-        for(i=0;i<pares.length;i++){
-            if (i!=pares.length-1){
-                MisClases.escribe(pares[i]+", ");
+        for (i = 0; i < pares.length; i++) {
+            if (i != pares.length - 1) {
+                MisClases.escribe(pares[i] + ", ");
             } else {
-                MisClases.escribeLinea(pares[i]+".\n");
+                MisClases.escribeLinea(pares[i] + ".\n");
             }
         }
     }
