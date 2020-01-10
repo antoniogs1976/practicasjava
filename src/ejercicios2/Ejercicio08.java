@@ -16,7 +16,7 @@ public class Ejercicio08 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int[] numeros = new int[10];
-        int i, total, positivos, negativos;
+        int i, total, positivos, negativos, ceros;
         float mediaPositivos, mediaNegativos;
         boolean bucle = true;
         char siOno;
@@ -26,6 +26,7 @@ public class Ejercicio08 {
             total = 0;
             positivos = 0;
             negativos = 0;
+            ceros = 0;
             mediaNegativos = 0;
             mediaPositivos = 0;
             /*************************************/
@@ -41,10 +42,13 @@ public class Ejercicio08 {
             // elemento del array
             for (i = 0; i < numeros.length; i++) {
                 total += numeros[i];
-                if (numeros[i] > 0) {
+                // contar ceros:
+                if (numeros[i] == 0){
+                    ceros++;
+                }else if (numeros[i] > 0) {
                     mediaPositivos += numeros[i];
                     positivos++;
-                } else {
+                } else if (numeros[i] < 0) {
                     mediaNegativos += numeros[i];
                     negativos++;
                 }
@@ -62,6 +66,7 @@ public class Ejercicio08 {
             MisClases.escribeLinea("Media de los números positivos: " + mediaPositivos);
             MisClases.escribeLinea("Media de los números negativos: " + mediaNegativos);
             MisClases.escribeLinea("Suma total de los números: " + total);
+            MisClases.escribeLinea("Has introducido, además, " + ceros + " ceros");
 
             // Preguntar si se continúa o no
             do {
