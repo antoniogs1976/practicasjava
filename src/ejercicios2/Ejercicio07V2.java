@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import tema5.CosasVarias;
+import miscosas.MisClases;
 
 /**
  * Ejercicio07V2
@@ -22,11 +22,12 @@ public class Ejercicio07V2 {
         boolean bucle = true;
         String tipo1 = "", tipo2 = "";
 
-        CosasVarias.escribeLinea("------------------------------------------------------------");
-        CosasVarias.escribeLinea("-                Identificación de Números                 -");
-        CosasVarias.escribeLinea("------------------------------------------------------------");
+        MisClases.limpiarPantalla();
+        MisClases.escribeLinea("------------------------------------------------------------");
+        MisClases.escribeLinea("-                Identificación de Números                 -");
+        MisClases.escribeLinea("------------------------------------------------------------");
         do {
-            CosasVarias.escribe("Introduce un número (0 para salir): ");
+            MisClases.escribe("Introduce un número (0 para salir): ");
             numero = entrada.nextInt();
             if (numero == 0) {
                 bucle = false;
@@ -44,10 +45,10 @@ public class Ejercicio07V2 {
                     tipo2 = "y positivo.";
                 }
                 // Mostramos el resultado
-                CosasVarias.escribeLinea("El número " + numero + " es " + tipo1 + tipo2);
+                MisClases.escribeLinea("El número " + numero + " es " + tipo1 + tipo2);
             }
         } while (bucle != false);
-        CosasVarias.escribeLinea("bye!");
+        MisClases.escribeLinea("bye!");
         entrada.close();
     }
 }

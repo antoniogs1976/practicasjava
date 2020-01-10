@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import tema5.CosasVarias;
+import miscosas.MisClases;
 
 /**
  * Ejercicio07V3
@@ -24,16 +24,17 @@ public class Ejercicio07V3 {
         boolean bucle = true;
         String tipo1 = "", tipo2 = "";
 
-        CosasVarias.escribeLinea("------------------------------------------------------------");
-        CosasVarias.escribeLinea("-                Identificación de Números                 -");
-        CosasVarias.escribeLinea("------------------------------------------------------------");
+        MisClases.limpiarPantalla();
+        MisClases.escribeLinea("------------------------------------------------------------");
+        MisClases.escribeLinea("-                Identificación de Números                 -");
+        MisClases.escribeLinea("------------------------------------------------------------");
         do {
-            CosasVarias.escribe("Introduce un número: ");
+            MisClases.escribe("Introduce un número: ");
             numero = entrada.nextInt();    
             
             // Comprobamos si es cero o no
             if (numero == 0) {
-                CosasVarias.escribeLinea("El número es cero.");
+                MisClases.escribeLinea("El número es cero.");
             } else {
                 // Comprobar si es par o impar
                 if (numero % 2 == 0) {
@@ -48,11 +49,11 @@ public class Ejercicio07V3 {
                     tipo2 = "y positivo.";
                 }
                 // Mostramos el resultado
-                CosasVarias.escribeLinea("El número " + numero + " es " + tipo1 + tipo2);
+                MisClases.escribeLinea("El número " + numero + " es " + tipo1 + tipo2);
             }
             // preguntar si se sigue o no se sigue
             do {
-                CosasVarias.escribe("¿Desea introducir más números? (S/N): ");
+                MisClases.escribe("¿Desea introducir más números? (S/N): ");
                 siOno = entrada.next().charAt(0);
                 if (siOno == 'n' || siOno == 'N') {
                     bucle = false;
@@ -62,7 +63,7 @@ public class Ejercicio07V3 {
             } while (siOno != 'n' && siOno != 'N' && siOno != 's' && siOno != 'S');
 
         } while (bucle != false);
-        CosasVarias.escribeLinea("bye!");
+        MisClases.escribeLinea("bye!");
         entrada.close();
     }
 }

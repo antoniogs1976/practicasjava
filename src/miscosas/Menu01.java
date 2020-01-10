@@ -30,6 +30,7 @@ public class Menu01 {
         MisClases.escribeLinea("99 - Salir");
 
         selection = entrada.nextInt();
+        entrada.close();    // BORRAR ESTO
         return selection;
     }
 
@@ -47,6 +48,7 @@ public class Menu01 {
         MisClases.escribeLinea("99 - volver");
 
         selection = entrada.nextInt();
+        entrada.close();    // BORRAR ESTO
         return selection;
     }
 

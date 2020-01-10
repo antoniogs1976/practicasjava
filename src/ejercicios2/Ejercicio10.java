@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import tema5.CosasVarias;
+import miscosas.MisClases;
 
 /**
  * Ejercicio10
@@ -16,16 +16,21 @@ public class Ejercicio10 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int[] numeros = new int[10];
-        int i, ceros = 0, positivos = 0, negativos = 0;
+        int i, ceros, positivos, negativos;
         boolean bucle = true;
         char siOno;
 
-        CosasVarias.escribeLinea("------------------------------------------------------------");
-        CosasVarias.escribeLinea("-  Array 10 números y contar positivos, negativos y ceros  -");
-        CosasVarias.escribeLinea("------------------------------------------------------------");
         while (bucle) {
+            // inicializar variables
+            ceros = 0;
+            positivos = 0;
+            negativos = 0;
+            MisClases.limpiarPantalla();
+            MisClases.escribeLinea("------------------------------------------------------------");
+            MisClases.escribeLinea("-  Array 10 números y contar positivos, negativos y ceros  -");
+            MisClases.escribeLinea("------------------------------------------------------------");
             for (i = 0; i <= 9; i++) {
-                CosasVarias.escribe("Introduce el valor del número " + (i + 1) + ": ");
+                MisClases.escribe("Introduce el valor del número " + (i + 1) + ": ");
                 numeros[i] = entrada.nextInt();
             }
             // Recorrer el array actualizando las medias y el total según sea el valor del
@@ -40,20 +45,18 @@ public class Ejercicio10 {
                 }
             }
             // Mostramos los resultados utilizo el formato %.2f para que imprima 2 decimales
-            CosasVarias.escribeLinea("Has introducido " + positivos + " números positivos.");
-            CosasVarias.escribeLinea("Has introducido " + negativos + " números negativos.");
-            CosasVarias.escribeLinea("Has introducido " + ceros + " ceros.");
+            MisClases.escribeLinea("Has introducido " + positivos + " números positivos.");
+            MisClases.escribeLinea("Has introducido " + negativos + " números negativos.");
+            MisClases.escribeLinea("Has introducido " + ceros + " ceros.");
             
             // Preguntar si se continúa o no
-            CosasVarias.escribeLinea("¿Desea repetir la operación? (S/N): ");
+            MisClases.escribe("¿Desea repetir la operación? (S/N): ");
             siOno = entrada.next().charAt(0);
             if (siOno == 'n' || siOno == 'N') {
                 bucle = false;
-            } else {
-                bucle = true;
             }
         }
-        CosasVarias.escribeLinea("bye!");
+        MisClases.escribeLinea("bye!");
         // cerrar el scanner
         entrada.close();
     }

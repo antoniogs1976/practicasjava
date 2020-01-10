@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import tema5.CosasVarias;
+import miscosas.MisClases;
 
 /**
  * Ejercicio08
@@ -16,17 +16,25 @@ public class Ejercicio08 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int[] numeros = new int[10];
-        int i, total = 0, positivos = 0, negativos = 0;
+        int i, total, positivos, negativos;
         float mediaPositivos = 0, mediaNegativos = 0;
         boolean bucle = true;
         char siOno;
 
-        CosasVarias.escribeLinea("------------------------------------------------------------");
-        CosasVarias.escribeLinea("-     Array 10 números y media de positivos y negativos    -");
-        CosasVarias.escribeLinea("------------------------------------------------------------");
         while (bucle) {
+            // Inicializar variables
+            total = 0;
+            positivos = 0;
+            negativos = 0;
+            mediaNegativos = 0;
+            mediaPositivos = 0;
+            /*************************************/
+            MisClases.limpiarPantalla();
+            MisClases.escribeLinea("------------------------------------------------------------");
+            MisClases.escribeLinea("-     Array 10 números y media de positivos y negativos    -");
+            MisClases.escribeLinea("------------------------------------------------------------");
             for (i = 0; i <= 9; i++) {
-                CosasVarias.escribe("Introduce el valor del número " + (i + 1) + ": ");
+                MisClases.escribe("Introduce el valor del número " + (i + 1) + ": ");
                 numeros[i] = entrada.nextInt();
             }
             // Recorrer el array actualizando las medias y el total según sea el valor del
@@ -51,12 +59,12 @@ public class Ejercicio08 {
             }
 
             //Mostramos los resultados utilizo el formato %.2f para que imprima 2 decimales
-            CosasVarias.escribeLinea("Media de los números positivos: "+mediaPositivos);
-            CosasVarias.escribeLinea("Media de los números negativos: "+mediaNegativos);
-            CosasVarias.escribeLinea("Suma total de los números: "+total);
+            MisClases.escribeLinea("Media de los números positivos: "+mediaPositivos);
+            MisClases.escribeLinea("Media de los números negativos: "+mediaNegativos);
+            MisClases.escribeLinea("Suma total de los números: "+total);
 
             // Preguntar si se continúa o no
-            CosasVarias.escribeLinea("¿Desea repetir la operación? (S/N): ");
+            MisClases.escribeLinea("¿Desea repetir la operación? (S/N): ");
             siOno = entrada.next().charAt(0);
             if (siOno == 'n' || siOno == 'N') {
                 bucle = false;
@@ -64,7 +72,7 @@ public class Ejercicio08 {
                 bucle = true;
             }
         }
-        CosasVarias.escribeLinea("bye!");
+        MisClases.escribeLinea("bye!");
         // cerrar el scanner
         entrada.close();
     }

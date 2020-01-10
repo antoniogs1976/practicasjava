@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import tema5.CosasVarias; 
+import miscosas.MisClases; 
 
 /**
  * Ejercicio04
@@ -18,26 +18,26 @@ public class Ejercicio04 {
         boolean bucle = true;
         char SioNo;
 
-        CosasVarias.escribeLinea("------------------------------------------------------------");        
-        CosasVarias.escribeLinea("-             Horas, Minutos y Segundos válidos            -");        
-        CosasVarias.escribeLinea("------------------------------------------------------------");        
+        MisClases.escribeLinea("------------------------------------------------------------");        
+        MisClases.escribeLinea("-             Horas, Minutos y Segundos válidos            -");        
+        MisClases.escribeLinea("------------------------------------------------------------");        
         while (bucle){
-            CosasVarias.escribe("Introduce las horas (HH): ");
+            MisClases.escribe("Introduce las horas (HH): ");
             HH = entrada.nextInt();
-            CosasVarias.escribe("Introduce los minutos (MM): ");
+            MisClases.escribe("Introduce los minutos (MM): ");
             MM = entrada.nextInt();
-            CosasVarias.escribe("Introduce los segundos (SS): ");
+            MisClases.escribe("Introduce los segundos (SS): ");
             SS = entrada.nextInt();
             // Comprobar que los datos son válidos
             // HH debe tener un valor entre 0 y 23
             // MM y SS debe tener un valor entre 0 y 59
             if ((HH >= 0 && HH <= 23) && (MM >= 0 && MM <= 59) && (SS >= 0 && SS <= 59)){
-                CosasVarias.escribeLinea("La hora "+HH+":"+MM+":"+SS+" es válida.");
+                MisClases.escribeLinea("La hora "+HH+":"+MM+":"+SS+" es válida.");
             } else {
-                CosasVarias.escribeLinea("La hora "+HH+":"+MM+":"+SS+" no es válida.");
+                MisClases.escribeLinea("La hora "+HH+":"+MM+":"+SS+" no es válida.");
             }
             //
-            CosasVarias.escribe("¿Desea comprobar más horas? (S/N): ");
+            MisClases.escribe("¿Desea comprobar más horas? (S/N): ");
             SioNo = entrada.next().charAt(0);
             if (SioNo == 'n' || SioNo == 'N'){
                 bucle = false;

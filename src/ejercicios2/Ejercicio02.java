@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import tema5.CosasVarias;
+import miscosas.MisClases;
 
 /**
  * Ejercicio02
@@ -18,23 +18,23 @@ public class Ejercicio02 {
         //char caracter;
         String letra;
         boolean bucle = true;
-        CosasVarias.limpiarPantalla();
-        CosasVarias.escribeLinea("------------------------------------------------------------");
-        CosasVarias.escribeLinea("-              L E T R A   M A Y Ú S C U L A               -");
-        CosasVarias.escribeLinea("------------------------------------------------------------");
+        MisClases.limpiarPantalla();
+        MisClases.escribeLinea("------------------------------------------------------------");
+        MisClases.escribeLinea("-              L E T R A   M A Y Ú S C U L A               -");
+        MisClases.escribeLinea("------------------------------------------------------------");
         while (bucle == true) {
-            CosasVarias.escribe("Introduce un letra (-1 para salir): ");
+            MisClases.escribe("Introduce un letra (-1 para salir): ");
             letra = entrada.nextLine();
             if (letra.equals("-1")){
                 bucle = false;
             } else {
                 //caracter = entrada.nextLine().charAt(0);
                 if (Character.isDigit(letra.charAt(0)) == true){
-                    CosasVarias.escribeLinea("Has introducido un número, no una letra...");
+                    MisClases.escribeLinea("Has introducido un número, no una letra...");
                 } else if (Character.isUpperCase(letra.charAt(0)) == true){
-                    CosasVarias.escribeLinea("La letra es mayúscula.");
+                    MisClases.escribeLinea("La letra es mayúscula.");
                 } else {
-                    CosasVarias.escribeLinea("La letra es minúscula.");
+                    MisClases.escribeLinea("La letra es minúscula.");
                 }    
             }
         }

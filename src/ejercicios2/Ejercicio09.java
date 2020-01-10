@@ -1,6 +1,6 @@
 package ejercicios2;
 
-import tema5.CosasVarias;
+import miscosas.MisClases;
 
 /**
  * Ejercicio09
@@ -15,17 +15,18 @@ public class Ejercicio09 {
         int[] pares = new int[20];
         int i;
 
-        CosasVarias.escribeLinea("--------------------------------------------------------------------------");
-        CosasVarias.escribeLinea("-                Array con los 20 primeros números pares                 -");
-        CosasVarias.escribeLinea("--------------------------------------------------------------------------");
+        MisClases.limpiarPantalla();
+        MisClases.escribeLinea("--------------------------------------------------------------------------");
+        MisClases.escribeLinea("-                Array con los 20 primeros números pares                 -");
+        MisClases.escribeLinea("--------------------------------------------------------------------------");
         for(i=0;i<pares.length;i++){
             pares[i] = (i+1)*2;
         }
         for(i=0;i<pares.length;i++){
             if (i!=pares.length-1){
-                CosasVarias.escribe(pares[i]+", ");
+                MisClases.escribe(pares[i]+", ");
             } else {
-                CosasVarias.escribeLinea(""+pares[i]);
+                MisClases.escribeLinea(pares[i]+".\n");
             }
         }
     }

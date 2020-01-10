@@ -1,7 +1,7 @@
 package ejercicios2;
 
 import java.util.Scanner;
-import tema5.CosasVarias;
+import miscosas.MisClases;
 
 /**
  * Ejercicio05V2
@@ -26,15 +26,15 @@ public class Ejercicio05V2 {
         boolean bucle = true;
         char SioNo;
 
-        CosasVarias.escribeLinea("------------------------------------------------------------");
-        CosasVarias.escribeLinea("-                ¿Cuántos días tiene el mes?               -");
-        CosasVarias.escribeLinea("------------------------------------------------------------");
+        MisClases.escribeLinea("------------------------------------------------------------");
+        MisClases.escribeLinea("-                ¿Cuántos días tiene el mes?               -");
+        MisClases.escribeLinea("------------------------------------------------------------");
         while (bucle) {
             do {
-                CosasVarias.escribe("Introduce el número de mes (1-12): ");
+                MisClases.escribe("Introduce el número de mes (1-12): ");
                 mes = entrada.nextInt();
                 if (mes < 1 || mes > 12) {
-                    CosasVarias.escribeLinea("El número de mes introducido (" + mes + ") no es válido.");
+                    MisClases.escribeLinea("El número de mes introducido (" + mes + ") no es válido.");
                 }
             } while (mes < 1 || mes > 12);
             switch (mes) {
@@ -90,9 +90,9 @@ public class Ejercicio05V2 {
             // En este caso no uso el DEFAULT porque ya está controlado el error del mes no válido.
 
             // Mostramos los datos
-            CosasVarias.escribeLinea("El mes " + mes + " corresponde a " + meses + " y tiene " + dias + " días.");
+            MisClases.escribeLinea("El mes " + mes + " corresponde a " + meses + " y tiene " + dias + " días.");
             // Comprobamos bucle general
-            CosasVarias.escribe("¿Desea comprobar más meses? (S/N): ");
+            MisClases.escribe("¿Desea comprobar más meses? (S/N): ");
             SioNo = entrada.next().charAt(0);
             if (SioNo == 'n' || SioNo == 'N') {
                 bucle = false;
