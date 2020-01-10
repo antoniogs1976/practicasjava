@@ -16,9 +16,9 @@ public class Ejercicio09 {
         int i;
 
         MisClases.limpiarPantalla();
-        MisClases.escribeLinea("--------------------------------------------------------------------------");
-        MisClases.escribeLinea("-                Array con los 20 primeros números pares                 -");
-        MisClases.escribeLinea("--------------------------------------------------------------------------");
+        MisClases.escribeLinea("---------------------------------------------------------------------------");
+        MisClases.escribeLinea("-                 Array con los 20 primeros números pares                 -");
+        MisClases.escribeLinea("---------------------------------------------------------------------------");
         for(i=0;i<pares.length;i++){
             pares[i] = (i+1)*2;
         }
