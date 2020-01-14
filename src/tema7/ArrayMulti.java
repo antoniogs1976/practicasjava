@@ -13,12 +13,10 @@ public class ArrayMulti {
         int[][] notas1 = {{5, 7, 9}, {4, 6, 5}};
         int[][] notas2 = new int[2][3];
 
-        // recorrer el array notas2 y mostrarlo por pantalla
-        // en filas y columnas
+        // recorrer el array notas2 y mostrarlo por pantalla en filas y columnas
         final int ASIGNATURAS = 2;
         final int ALUMNOS = 3;
-        // al recorrer un array el bucle debe ir
-        // desde 0 hasta el TAMAÑO - 1
+        // al recorrer un array el bucle debe ir desde 0 hasta el TAMAÑO - 1
         MisClases.escribeLinea("Array notas");
         for(int asignatura = 0; asignatura < ASIGNATURAS; asignatura++) {
             MisClases.escribeLinea("asignatura-" + asignatura);
