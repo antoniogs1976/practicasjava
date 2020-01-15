@@ -15,19 +15,17 @@ public class HundirFlotaV2 {
     public static final char ICONO_BARCO_TOCADO = 'X';
     
     public static void main(String[] args) {
-        // 1    crear el tablero de 10x10
-        // 1.1  inicializar el tablero
-        // 1.1.1    0 = agua
-        // 1.1.2    1 = barco
-        // 1.1.3    2 = barco tocado
-        // 1.1.4    3 = disparo al agua
-        // 2    ubicar el barquito (de momento 1) de forma aleatoria
-        // 3    dibujar el tablero sin indicar el barco, todo lleno de agua
-        // 4    comenzar a disparar
-        // 4.1  comprobar si hay agua o barco
-        // 5.2  indicar si has dado al agua o al barco
-        // 5.3  indicar si ya has disparado a esas coordenadas
-        // 5.4  aumentar el contador de disparos
+        // * 1    crear el tablero de 10x10
+        // * 1.1  inicializar el tablero
+        // * 2    crear tablero de disparos 10x10
+        // * 2.2  inicializar el tablero
+        // * 3    ubicar el barquito (de momento 1) de forma aleatoria
+        // 4    dibujar el tablero sin indicar el barco, todo lleno de agua
+        // 5    comenzar a disparar
+        // 6.1  comprobar si hay agua o barco
+        // 6.2  indicar si has dado al agua o al barco
+        // 6.3  indicar si ya has disparado a esas coordenadas
+        // 6.4  aumentar el contador de disparos
 
         // variables y cosas que necesitamos
         char[][] tablero;
@@ -62,6 +60,12 @@ public class HundirFlotaV2 {
         // Borrar desde el comentario "para dibujar..." hasta aquí
     }
 
+    /**
+     * crearTablero
+     * Crea el tablero de juego en base a la constante TAMANO.
+     * 
+     * @return Devuelve un array char[][] con el tamanño de TAMANO rellenado con el icono de agua.
+     */
     public static char[][] crearTablero() {
         char[][] retorno = new char[TAMANO][TAMANO];
         // Inicialiarlo
@@ -73,6 +77,12 @@ public class HundirFlotaV2 {
         return retorno;
     }   // crearTablero
 
+    /**
+     * crearTableroDisparos
+     * Crea un tablero para almacenar los disparos realizados
+     * 
+     * @return Devuelve un array boolean[][] con el tamaño de TAMANO rellenado con false.
+     */
     public static boolean[][] crearTableroDisparos(){
         boolean[][] retorno = new boolean[TAMANO][TAMANO];
         for (int i = 0; i < TAMANO; i++) {
@@ -83,6 +93,11 @@ public class HundirFlotaV2 {
         return retorno;
     }   // crearTableroDisparos
 
+    /**
+     * ubicarBarco
+     * Ubica un barco de 1 casilla en el "tableroJuego" que se le indique
+     * @param tableroJuego array char[][] del tablero de juego
+     */
     public static void ubicarBarco(char[][] tableroJuego){
         Random cosa = new Random();
         tableroJuego[cosa.nextInt(TAMANO) + 1][cosa.nextInt(TAMANO) + 1] = ICONO_BARCO;
