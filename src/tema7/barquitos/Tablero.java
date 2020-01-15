@@ -11,25 +11,33 @@ public class Tablero {
     - DISPARO FALLIDO pintar o
     */
 
-    final int ROW = 10;
-    final int COL = 10;
-    final char[] LET = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-    final char[] NUM = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    /* ********** CONSTANTES ********** */
+    final int TAMANO = 10;
     
-    int[][] tableroJuego;
+    final char ICONO_BARCO = 'B';
+    final char ICONO_DISPARO_BARCO ='X';
+    final char ICONO_AGUA = '·';
+    final char ICONO_DISPARO_AGUA = '*';
+    
+    final char[] LETRAS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+    final char[] NUMEROS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    
+    /* ********** VARIABLES ********** */
+    private char[][] tablero;
 
     /* ********** Constructor ********** */
     public Tablero(){
-        tableroJuego = new int[ROW][COL];
+        tablero = new char[TAMANO][TAMANO];
         
         // Inicializar el tablero
-        for(int i = 0; i<=ROW; i++){
-            for(int j = 0; j<=COL;j++){
-                
+        for(int i = 0; i<=TAMANO; i++){
+            for(int j = 0; j<=TAMANO;j++){
+                tablero[i][j] = ICONO_AGUA;
             }
         }
-    }
-    /* ********** Getters y Setters ********** */
+        // aquí iría lo de colocar los barcos
+
+    } // fin del constructor
    
 
     /* ********** OTROS MÉTODOS ********** */
