@@ -6,6 +6,10 @@ import java.util.Random;
 
 /**
  * HundirFlotaV2
+ * 
+ * ayuda
+ * 
+ * https://codereview.stackexchange.com/questions/161680/oop-battleship-console-game-in-java/161695
  */
 public class HundirFlotaV2 {
     public static final int TAMANO = 10;
