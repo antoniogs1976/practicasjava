@@ -14,7 +14,7 @@ public class HundirFlotaV3 {
     // Tamaño del tablero
     private static final int TAMANO = 10;
     // Iconos del juego
-    private static final char ICONO_AGUA = '·';
+    private static final char ICONO_AGUA = '~';
     private static final char ICONO_AGUA_FALLO = '*';
     private static final char ICONO_BARCO = 'B';
     private static final char ICONO_BARCO_TOCADO = 'X';
@@ -49,8 +49,38 @@ public class HundirFlotaV3 {
         // ICONO_AGUA_FALLO = '*';
         // ICONO_BARCO = 'B';
         // ICONO_BARCO_TOCADO = 'X';
-        private char estadoCelda;
-    }
+        private int fila;
+        private int columna;
+        private char estado;
+        private boolean usado;
+        // Constructor
+        public Celda(int fila, int columna){
+            this.fila = fila;
+            this.columna = columna;
+            this.estado = ICONO_AGUA;
+            this.usado = false;
+        }
+        // Getters y Setters
+        public char getEstado() {
+            return estado;
+        }
+
+        public void setEstado(char estado) {
+            this.estado = estado;
+        }
+
+        public boolean isUsado() {
+            return usado;
+        }
+
+        public void setUsado(boolean usado) {
+            this.usado = usado;
+        }
+        // Otros métodos
+        public void cambiarIcono(char tipoIcono){
+            this.estado = tipoIcono;
+        }
+    } // Celda
 
     // CLASE BARCO
     private static class Barco{
@@ -58,19 +88,82 @@ public class HundirFlotaV3 {
         private static String nombre;
         private static int tamano;
         private static int vidas;
-
-        public Barco(String vnombre, int vtamano){
-            this.nombre = vnombre;
-            this.tamano = vtamano;
+        // Constructor
+        public Barco(String vNombre, int vTamano){
+            this.nombre = vNombre;
+            this.tamano = vTamano;
             this.vidas = this.tamano;
         }
+        // Getters y Setters
+        public static String getNombre() {
+            return nombre;
+        }
 
-    }
+        public static void setNombre(String nombre) {
+            Barco.nombre = nombre;
+        }
+
+        public static int getTamano() {
+            return tamano;
+        }
+
+        public static void setTamano(int tamano) {
+            Barco.tamano = tamano;
+        }
+
+        public static int getVidas() {
+            return vidas;
+        }
+
+        public static void setVidas(int vidas) {
+            Barco.vidas = vidas;
+        }
+    } // Barco
+
+    // CLASE TABLERO
+    public static class Tablero{
+        private Celda[][] tablero;
+        // Constructor
+        public Tablero(){
+            this.tablero = new Celda[TAMANO][TAMANO];
+            for(int i=0;i<TAMANO;i++){
+                for(int j=0;j<TAMANO;j++){
+                    this.tablero[i][j] = new Celda(i, j);
+                }
+            }
+            // Aquí habría que inicializar los barcos y ubicarlos
+        } // Constructor
+        // Otros Métodos
+        public void dibujarTableroDemo(){
+            for(int i=0;i<=TAMANO;i++){
+                for(int j=0;j<=TAMANO;j++){
+                    if (i == 0 && j == 0) {
+                        // Primera casilla, una X para diferenciar
+                        MisClases.escribe("X\t");
+                    } else if (i == 0 && j > 0) {
+                        // Primera fila, con las cabeceras
+                        MisClases.escribe((j - 1) + "\t");
+                    } else if (i > 0 && j == 0) {
+                        // Columnas, escribir el número
+                        MisClases.escribe((i - 1) + "\t");
+                    } else if (i > 0 && j > 0) {
+                        MisClases.escribe(tablero[i-1][j-1].estado+"\t");                        
+                    }
+                }
+                MisClases.escribeLinea(" ");
+            }
+        }
+    } // Tablero
+
 
     /* ************************************************** */
     /* MAIN  */
     public static void main(String[] args) {
-        
+        // Limpiar pantalla
+        MisClases.limpiarPantalla();
+        // iniciar el tablero
+        Tablero tablero = new Tablero();
+        tablero.dibujarTableroDemo();
     }
  
     

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - HundirFlotaV3",
+            "request": "launch",
+            "mainClass": "tema7.HundirFlotaV3",
+            "projectName": "practicasjava_e544edca"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
