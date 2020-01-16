@@ -1,0 +1,434 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsarComposicion<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.composicion.UsarComposicion",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio01<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio01",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio02<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio02",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio03<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio03",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio04<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio04",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio05<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio05",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio06<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio06",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio07<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio07",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio08<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio08",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ejercicio09<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.ejercicios_antiguos.ejercicio09",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsarHerenciaLibro<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.herencia.UsarHerenciaLibro",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaTriangulo<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios.triangulo.UsaTriangulo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio01<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio01",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio02<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio02",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio03<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio03",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio04<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio04",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio05<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio05",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio05V2<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio05V2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio06V1<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio06V1",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio06V2<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio06V2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio07V1<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio07V1",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio07V2<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio07V2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio07V3<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio07V3",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio08<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio08",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio09<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio09",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ejercicio10<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "ejercicios2.Ejercicio10",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Menu01<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "miscosas.Menu01",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-HolaMundo<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.HolaMundo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OperadorIncremento<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.OperadorIncremento",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PerimetroCircunferencia<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.PerimetroCircunferencia",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Temperatura<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.Temperatura",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaCirculo<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema2.UsaCirculo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MisVehiculos<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.MisVehiculos",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaMatematicas<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.UsaMatematicas",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaSobrecarga<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.UsaSobrecarga",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsandoVehiculos<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.UsandoVehiculos",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsarCirculo<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.UsarCirculo",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-VariableLocal<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema3.VariableLocal",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MisVehiculos<practicasjava_e4483c73>(1)",
+            "request": "launch",
+            "mainClass": "tema4.MisVehiculos",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PruebaHerencia<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema4.PruebaHerencia",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Adivina<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.Adivina",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Bucles<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.Bucles",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ClasesAsociadas<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.ClasesAsociadas",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PedirDatosUsuario<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.PedirDatosUsuario",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PruebaFactorial<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.PruebaFactorial",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PruebaStrings<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.PruebaStrings",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TablaMultiplicar<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.TablaMultiplicar",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaMatematicas<practicasjava_e4483c73>(1)",
+            "request": "launch",
+            "mainClass": "tema5.UsaMatematicas",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaMatematicas2<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.UsaMatematicas2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UsaMates2<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema5.UsaMates2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Condicionales<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema6.Condicionales",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArrayMulti<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.ArrayMulti",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArrayMultiV2<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.ArrayMultiV2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArraysPruebas<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.ArraysPruebas",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-BucleAnidado<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.BucleAnidado",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DiasSemana<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.DiasSemana",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-HundirFlota<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.HundirFlota",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-HundirFlotaV2<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.HundirFlotaV2",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-HundirFlotaV3<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.HundirFlotaV3",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SortArray<practicasjava_e4483c73>",
+            "request": "launch",
+            "mainClass": "tema7.SortArray",
+            "projectName": "practicasjava_e4483c73"
+        }
+    ]
+}
