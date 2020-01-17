@@ -44,11 +44,6 @@ public class HundirFlotaV3 {
     
     // CLASE CELDA
     private static class Celda{
-        // Cada celda puede tener 4 valores:
-        // ICONO_AGUA = '·';
-        // ICONO_AGUA_FALLO = '*';
-        // ICONO_BARCO = 'B';
-        // ICONO_BARCO_TOCADO = 'X';
         private int fila;
         private int columna;
         private char estado;
@@ -123,6 +118,7 @@ public class HundirFlotaV3 {
     // CLASE TABLERO
     public static class Tablero{
         private Celda[][] tablero;
+        private Barco[] barcos = new Barco[10];
         // Constructor
         public Tablero(){
             this.tablero = new Celda[TAMANO][TAMANO];
@@ -131,30 +127,115 @@ public class HundirFlotaV3 {
                     this.tablero[i][j] = new Celda(i, j);
                 }
             }
-            // Aquí habría que inicializar los barcos y ubicarlos
+            for(int i = 0; i< barcos.length; i++){
+                switch (i){
+                    case 0:
+                        barcos[i].nombre = "Portaaviones";
+                        barcos[i].tamano = 4;
+                        barcos[i].vidas = 4;
+                        break;
+                    case 1:
+                        barcos[i].nombre = "Submarino 1";
+                        barcos[i].tamano = 3;
+                        barcos[i].vidas = 3;
+                        break;
+                    case 2:
+                        barcos[i].nombre = "Submarino 2";
+                        barcos[i].tamano = 3;
+                        barcos[i].vidas = 3;
+                        break;
+                    case 3:
+                        barcos[i].nombre = "Destructor 1";
+                        barcos[i].tamano = 2;
+                        barcos[i].vidas = 2;
+                        break;
+                    case 4:
+                        barcos[i].nombre = "Destructor 2";
+                        barcos[i].tamano = 2;
+                        barcos[i].vidas = 2;
+                        break;
+                    case 5:
+                        barcos[i].nombre = "Destructor 3";
+                        barcos[i].tamano = 2;
+                        barcos[i].vidas = 2;
+                        break;
+                    case 6:
+                        barcos[i].nombre = "Fragata 1";
+                        barcos[i].tamano = 1;
+                        barcos[i].vidas = 1;
+                        break;
+                    case 7:
+                        barcos[i].nombre = "Fragata 2";
+                        barcos[i].tamano = 1;
+                        barcos[i].vidas = 1;
+                        break;
+                    case 8:
+                        barcos[i].nombre = "Fragata 3";
+                        barcos[i].tamano = 1;
+                        barcos[i].vidas = 1;
+                        break;
+                    case 9:
+                        barcos[i].nombre = "Fragata 4";
+                        barcos[i].tamano = 1;
+                        barcos[i].vidas = 1;
+                        break;
+                }
+            }
         } // Constructor
         // Otros Métodos
-        public void dibujarTableroDemo(){
-            for(int i=0;i<=TAMANO;i++){
-                for(int j=0;j<=TAMANO;j++){
-                    if (i == 0 && j == 0) {
-                        // Primera casilla, una X para diferenciar
-                        MisClases.escribe("X\t");
-                    } else if (i == 0 && j > 0) {
-                        // Primera fila, con las cabeceras
-                        MisClases.escribe((j - 1) + "\t");
-                    } else if (i > 0 && j == 0) {
-                        // Columnas, escribir el número
-                        MisClases.escribe((i - 1) + "\t");
-                    } else if (i > 0 && j > 0) {
-                        MisClases.escribe(tablero[i-1][j-1].estado+"\t");                        
-                    }
-                }
-                MisClases.escribeLinea(" ");
-            }
-        }
-    } // Tablero
 
+        // Ubicar los barcos
+        public void ubicarBarcos(Tablero tableroJuego){
+
+        }
+
+        // Dibujar el tablero
+        public void dibujarTablero(boolean disparos){
+            if (disparos){
+                // Dibujar el tablero de disparos (sin barcos)
+                for(int i=0;i<=TAMANO;i++){
+                    for(int j=0;j<=TAMANO;j++){
+                        if (i == 0 && j == 0) {
+                            // Primera casilla, una X para diferenciar
+                            MisClases.escribe("X\t");
+                        } else if (i == 0 && j > 0) {
+                            // Primera fila, con las cabeceras
+                            MisClases.escribe((j - 1) + "\t");
+                        } else if (i > 0 && j == 0) {
+                            // Columnas, escribir el número
+                            MisClases.escribe((i - 1) + "\t");
+                        } else if (i > 0 && j > 0) {
+                            if (tablero[i-1][j-1].isUsado()){
+                                MisClases.escribe(ICONO_AGUA+"\t");
+                            } else {
+                                MisClases.escribe(tablero[i-1][j-1].getEstado()+"\t");
+                            }
+                        }
+                    }
+                    MisClases.escribeLinea(" ");
+                }
+            } else {
+                // Dibujar el tablero con todo
+                for(int i=0;i<=TAMANO;i++){
+                    for(int j=0;j<=TAMANO;j++){
+                        if (i == 0 && j == 0) {
+                            // Primera casilla, una X para diferenciar
+                            MisClases.escribe("X\t");
+                        } else if (i == 0 && j > 0) {
+                            // Primera fila, con las cabeceras
+                            MisClases.escribe((j - 1) + "\t");
+                        } else if (i > 0 && j == 0) {
+                            // Columnas, escribir el número
+                            MisClases.escribe((i - 1) + "\t");
+                        } else if (i > 0 && j > 0) {
+                            MisClases.escribe(tablero[i-1][j-1].estado+"\t");                        
+                        }
+                    }
+                    MisClases.escribeLinea(" ");
+                }
+            } // else
+        } // DibujarTablero
+    } // Tablero
 
     /* ************************************************** */
     /* MAIN  */
@@ -163,10 +244,9 @@ public class HundirFlotaV3 {
         MisClases.limpiarPantalla();
         // iniciar el tablero
         Tablero tablero = new Tablero();
-        tablero.dibujarTableroDemo();
-    }
- 
-    
+        // Dibujar el tablero de disparos nada más, sin barcos ni nada sólo agua y disparos
+        tablero.dibujarTablero(true);
+        // tablero.dibujarTablero(false);
 
-    
-}
+    } // main    
+} // fin del todo

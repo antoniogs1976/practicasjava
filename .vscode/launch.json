@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - PruebasArrayList",
+            "request": "launch",
+            "mainClass": "tema7.PruebasArrayList",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ArrayListsVarios",
+            "request": "launch",
+            "mainClass": "tema7.ArrayListsVarios",
+            "projectName": "practicasjava_e4483c73"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - HundirFlotaV3",
             "request": "launch",
             "mainClass": "tema7.HundirFlotaV3",
