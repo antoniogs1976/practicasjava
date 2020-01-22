@@ -2,6 +2,7 @@ package tema7;
 
 import miscosas.MisClases;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -267,7 +268,9 @@ public class GestionClientes {
     // --------------------------------------------- \\
 
     public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
+        Locale locale = new Locale("spa", "ES"); 
+        Scanner entrada = new Scanner(System.in, "UTF-8");
+        entrada.useLocale(locale);
         ArrayList<Cliente> listadoClientes = new ArrayList<Cliente>();
         int itemMenu = 0;
         // ************************************************************ \\

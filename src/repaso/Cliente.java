@@ -6,12 +6,12 @@ package repaso;
 public class Cliente {
 
     private String nombre;
-    private String apellido;
+    // private String apellido;
     private int edad;
     // constructor
-    public Cliente(String nombre, String apellido, int edad) {
+    public Cliente(String nombre, int edad) {
         this.nombre = nombre;
-        this.apellido = apellido;
+        //this.apellido = apellido;
         this.edad = edad;
     }
     // Getters y Setters
@@ -23,13 +23,13 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
+    // public String getApellido() {
+    //     return apellido;
+    // }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+    // public void setApellido(String apellido) {
+    //     this.apellido = apellido;
+    // }
 
     public int getEdad() {
         return edad;
@@ -40,6 +40,6 @@ public class Cliente {
     }
     // Otros métodos
     public String getDatos(){
-        return this.nombre + " " + this.apellido + " " + this.edad;
+        return this.nombre + " " + this.edad;
     }
 }

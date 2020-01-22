@@ -183,10 +183,12 @@ public class HundirFlotaV3 {
             }
         } // Constructor
         // Otros Métodos
-
         // Ubicar los barcos
         public void ubicarBarcos(Tablero tableroJuego){
-
+            // Debe ubicar los barcos de forma aleatoria
+            // Debe decidir, aleatoriamente, la disposición (horizontal o vertical)
+            // en caso de ser mayor de 1 cuadro
+            // Debe tener en cuenta la separación de 1 cuadro entre barcos
         }
 
         // Dibujar el tablero
