@@ -11,8 +11,7 @@ import java.util.Scanner;
  */
 public class LibreriaAgenda {
 
-    private static final String PATH = "c:/datos/";
-    private static final String EXT = ".txt";
+    private static final String NOMBREARCHIVO = "c:/datos/contactos.txt";
 
     /**
      * Método para limpar la consola
@@ -110,22 +109,18 @@ public class LibreriaAgenda {
     /**
      * Método para esribir los datos en un archivo de texto.
      * 
-     * @param entradaDatos   Scanner para la entrada de datos
      * @param listaContactos ArrayList<String> con los contactos
      */
-    public static void guardarClientes(Scanner entradaDatos, ArrayList<String> listaContactos) {
+    public static void guardarClientes(ArrayList<String> listaContactos) {
         FileWriter fichero = null;
         PrintWriter salida = null;
-        String nombreFichero;
-        entradaDatos.nextLine();
         limpiarPantalla();
         System.out.println("############################################################");
         System.out.println("##              GUARDAR CONTACTOS EN FICHERO              ##");
         System.out.println("############################################################");
-        System.out.println("Introduce el nombre del fichero a guardar: ");
-        nombreFichero = entradaDatos.nextLine();
+        System.out.println("Guardando datos en " + NOMBREARCHIVO);
         try {
-            fichero = new FileWriter(PATH + nombreFichero + EXT, false);
+            fichero = new FileWriter(NOMBREARCHIVO, false);
             salida = new PrintWriter(fichero);
             for (int i = 0; i < listaContactos.size(); i++) {
                 salida.print(listaContactos.get(i));

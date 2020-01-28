@@ -24,7 +24,7 @@ public class Agenda {
                     LibreriaAgenda.listarClientes(entrada, listaContactos);
                     break;
                 case 3:
-                    LibreriaAgenda.guardarClientes(entrada, listaContactos);
+                    LibreriaAgenda.guardarClientes(, listaContactos);
                     break;
                 default:
                     break;
