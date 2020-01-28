@@ -16,7 +16,9 @@ public class ficheros4 {
 
     public static void escribir(String nombreFichero){
         Persona jose = new Persona("11111111A", "José", "García García");
+        jose.setTelefono("968123456");
         Persona pedro = new Persona("22222222B", "Pedro", "López Marín");
+        pedro.setTelefono("911234567");
         FileOutputStream fichero = null;
         ObjectOutputStream salida = null;
         // 1 abrir fichero

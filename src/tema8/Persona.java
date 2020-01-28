@@ -7,19 +7,18 @@ import java.io.Serializable;
  */
 public class Persona implements Serializable {
     
-    /**
-     *
-     */
     private static final long serialVersionUID = -9149882142193462278L;
     private String nif;
     private String nombre;
     private String apellidos;
+    private String telefono;
 
     // CONSTRUCTOR
     public Persona(String nif, String nombre, String apellidos) {
         this.nif = nif;
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.telefono ="";
     }
 
     // GETTERS Y SETTERS
@@ -47,9 +46,17 @@ public class Persona implements Serializable {
         this.apellidos = apellidos;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     // OTROS MÉTODOS
     public String getAtributos() {
-        return this.nif + " - " + this.apellidos + ", " + this.nombre;
+        return "NIF: " + this.nif + "\tTLF: " + this.telefono + "\n" + this.apellidos + ", " + this.nombre;
     }
 
 }
