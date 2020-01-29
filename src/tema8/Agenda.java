@@ -12,8 +12,12 @@ public class Agenda {
         ArrayList<String> listaContactos = new ArrayList<String>();
         Scanner entrada = new Scanner(System.in);
         int opcion;
+        int numContactos = 0;
+        // leer la lista de contactos
+        LibreriaAgenda.cargarFichero(listaContactos);
         do {
-            LibreriaAgenda.menu();
+            numContactos = listaContactos.size();
+            LibreriaAgenda.menu(numContactos);
             System.out.print("Elige una opción: ");
             opcion = entrada.nextInt();
             switch (opcion) {
@@ -21,10 +25,16 @@ public class Agenda {
                     LibreriaAgenda.menuAnadir(entrada, listaContactos);
                     break;
                 case 2:
-                    LibreriaAgenda.listarClientes(entrada, listaContactos);
+                    LibreriaAgenda.borrarContacto(entrada, listaContactos);
                     break;
                 case 3:
-                    LibreriaAgenda.guardarClientes(, listaContactos);
+                    LibreriaAgenda.listarContactos(entrada, listaContactos);
+                    break;
+                case 4:
+                    LibreriaAgenda.menuGuardarContactos(entrada, listaContactos);
+                    break;
+                case 5:
+                    LibreriaAgenda.buscarContacto(entrada, listaContactos);
                     break;
                 default:
                     break;
@@ -32,5 +42,6 @@ public class Agenda {
 
         } while (opcion != 9);
         entrada.close();
+        LibreriaAgenda.salir(listaContactos);
     }
 }
