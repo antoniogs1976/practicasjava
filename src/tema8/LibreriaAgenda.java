@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class LibreriaAgenda {
 
     private static final String NOMBRE_ARCHIVO = "c:/datos/contactos.txt";
+    private static boolean cambios = false;
 
     /**
      * Método para limpar la consola
@@ -26,15 +27,21 @@ public class LibreriaAgenda {
             else
                 Runtime.getRuntime().exec("clear");
         } catch (IOException | InterruptedException ex) {
+            System.out.println("* ERROR: " + ex);
         }
-    } // final limpiarPantalla
+    }
 
+    /**
+     * Método para aceptar sólo una tecla para continuar
+     * 
+     * @param entradaDatos Scanner para la entrada de datos
+     */
     public static void pulsarTecla(Scanner entradaDatos) {
         char tecla;
         do {
             System.out.println("(pulsa S y presiona Enter para volver al menú)");
-            tecla = entradaDatos.next().charAt(0);
-        } while (tecla == 's' && tecla == 'S');
+            tecla = entradaDatos.next().toUpperCase().charAt(0);
+        } while (tecla != 'S');
     }
 
     /**
@@ -67,6 +74,10 @@ public class LibreriaAgenda {
         } else if (numeroContactos >= 10000) {
             System.out.println("##     (Actualmente hay " + numeroContactos + " contactos en la agenda)     ##");
         }
+        if (cambios) {
+            System.out.println("##  ----------------------------------------------------  ##");
+            System.out.println("##   (Hay cambios sin guardar en la lista de contactos)   ##");
+        }
         System.out.println("############################################################");
     }
 
@@ -93,12 +104,13 @@ public class LibreriaAgenda {
         listaContactos.add(nombre + ": " + telefono);
         System.out.println("##                    Contacto añadido                    ##");
         System.out.println("############################################################");
+        cambios = true;
         pulsarTecla(entradaDatos);
     }
 
     public static void borrarContacto(Scanner entradaDatos, ArrayList<String> listaContactos) {
         String nombre, contacto;
-        int opcion;
+        int opcion, contador = 0;
         char tecla;
         entradaDatos.nextLine();
         // dibujar el menu
@@ -119,32 +131,40 @@ public class LibreriaAgenda {
         for (int i = 0; i < listaContactos.size(); i++) {
             contacto = listaContactos.get(i);
             if (contacto.toUpperCase().contains(nombre.toUpperCase())) {
-                System.out.println("##  " + i + " - " + contacto);
+                System.out.println("##  " + (i + 1) + " - " + contacto);
+                contador++;
             }
         }
-        System.out.println("##  ----------------------------------------------------  ##");
-        System.out.println("##  Si hay varias coincidencias introduce el número  que  ##");
-        System.out.println("##         aparece delante del nombre del contacto        ##");
-        System.out.println("##       ASEGÚRATE DE INTRODUCIR EL NÚMERO CORRECTO       ##");
-        System.out.println("##   porque si introduce el número erróneo, borrarás el   ##");
-        System.out.println("##          contacto que no es, y menuda faena...         ##");
-        System.out.println("##  ----------------------------------------------------  ##");
-        System.out.print("##  ¿Qué contacto deseas eleminar? (-1 para cancelar): ");
-        opcion = entradaDatos.nextInt();
-        if (opcion != -1) {
-            System.out.println("##  vas a eleminar " + listaContactos.get(opcion));
-            System.out.print("##  ¿Deseas eliminar este contacto? (S/N): ");
-            tecla = entradaDatos.next().charAt(0);
-            if (tecla == 's' || tecla == 'S') {
-                listaContactos.remove(opcion);
+        if (contador != 0) {
+            // ha encontrado coincidencias
+            System.out.println("##  ----------------------------------------------------  ##");
+            System.out.println("##  Si hay varias coincidencias introduce el número  que  ##");
+            System.out.println("##         aparece delante del nombre del contacto        ##");
+            System.out.println("##       ASEGÚRATE DE INTRODUCIR EL NÚMERO CORRECTO       ##");
+            System.out.println("##   porque si introduce el número erróneo, borrarás el   ##");
+            System.out.println("##          contacto que no es, y menuda faena...         ##");
+            System.out.println("##  ----------------------------------------------------  ##");
+            System.out.print("##  ¿Qué contacto deseas eleminar? (0 para cancelar):  ");
+            opcion = entradaDatos.nextInt();
+            if (opcion != 0) {
+                System.out.println("##  vas a eleminar " + listaContactos.get(opcion - 1));
+                System.out.print("##  ¿Deseas eliminar este contacto? (S/N): ");
+                tecla = entradaDatos.next().toUpperCase().charAt(0);
+                if (tecla == 'S') {
+                    listaContactos.remove(opcion - 1);
+                    System.out.println("##  ----------------------------------------------------  ##");
+                    System.out.println("##                   CONTACTO ELIMINADO                   ##");
+                    System.out.println("##  ----------------------------------------------------  ##");
+                    cambios = true;
+                }
+            } else {
                 System.out.println("##  ----------------------------------------------------  ##");
-                System.out.println("##                   CONTACTO ELIMINADO                   ##");
+                System.out.println("##                 OPERACIÓN CANCELADA                    ##");
                 System.out.println("##  ----------------------------------------------------  ##");
             }
         } else {
-            System.out.println("##  ----------------------------------------------------  ##");
-            System.out.println("##                 OPERACIÓN CANCELADA                    ##");
-            System.out.println("##  ----------------------------------------------------  ##");
+            // no ha encontrado coincidencias
+            System.out.println("##           No se han encontrado coioncidencias          ##");
         }
         pulsarTecla(entradaDatos);
     }
@@ -223,17 +243,18 @@ public class LibreriaAgenda {
         System.out.println("Guardando datos en " + NOMBRE_ARCHIVO);
         guardarArchivoSinPreguntar(listaContactos);
         System.out.println("##  ----------------------------------------------------  ##");
-        System.out.println("##       Datos guardados en " + NOMBRE_ARCHIVO + " ##       ");
+        System.out.println("##       Datos guardados en " + NOMBRE_ARCHIVO + "      #");
         System.out.println("############################################################");
+        cambios = false;
         pulsarTecla(entradaDatos);
     }
 
     /**
      * Método para guardar los datos directamente sin preguntar nada al usuario
      * 
-     * @param listaContactos    ArrayList<String> con los contactos a guardar
+     * @param listaContactos ArrayList<String> con los contactos a guardar
      */
-    public static void guardarArchivoSinPreguntar(ArrayList<String> listaContactos){
+    public static void guardarArchivoSinPreguntar(ArrayList<String> listaContactos) {
         FileWriter fichero = null;
         PrintWriter salida = null;
         try {
@@ -245,7 +266,7 @@ public class LibreriaAgenda {
             fichero.close();
         } catch (Exception e) {
             System.out.println("* ERROR: " + e.getMessage());
-        }   
+        }
     }
 
     /**
@@ -273,9 +294,30 @@ public class LibreriaAgenda {
     }
 
     /**
-     * Método paradibujar una pantallita de salida
+     * Método para dibujar una pantallita de salida que, además, pide guardar datos
+     * en caso de no haber sido guardados
      */
-    public static void salir(ArrayList<String> listaContactos) {
+    public static void salir(Scanner entradaDatos, ArrayList<String> listaContactos) {
+        char tecla;
+        entradaDatos.nextLine();
+        if (cambios) {
+            limpiarPantalla();
+            System.out.println("############################################################");
+            System.out.println("##        ¡¡HAY CAMBIOS SIN GUARDAR EN LA AGENDA!!        ##");
+            System.out.println("############################################################");
+            System.out.println("##   Si sales del programa sin guardar esos cambios, se   ##");
+            System.out.println("##  perderán para siempre en el cybermundo de bits de la  ##");
+            System.out.println("##    informática y tendrás que volver a introducirlos    ##");
+            System.out.println("############################################################");
+            System.out.println("##   ¿Estás segur@ de que quieres salir sin guardarlos?   ##");
+            System.out.println("############################################################");
+            System.out.println("##    (pulsa G para guardar o cualquier tecla para salir)   ");
+            System.out.println("############################################################");
+            tecla = entradaDatos.nextLine().toUpperCase().charAt(0);
+            if (tecla == 'G'){
+                guardarArchivoSinPreguntar(listaContactos);
+            }
+        } 
         listaContactos.clear();
         limpiarPantalla();
         System.out.println("############################################################");

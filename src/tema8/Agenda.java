@@ -41,7 +41,7 @@ public class Agenda {
             }
 
         } while (opcion != 9);
+        LibreriaAgenda.salir(entrada, listaContactos);
         entrada.close();
-        LibreriaAgenda.salir(listaContactos);
     }
 }
