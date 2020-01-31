@@ -27,7 +27,8 @@ public class LibreriaAgenda {
             else
                 Runtime.getRuntime().exec("clear");
         } catch (IOException | InterruptedException ex) {
-            System.out.println("* ERROR: " + ex);
+            System.out.println("* ERROR *");
+            ex.printStackTrace();
         }
     }
 
