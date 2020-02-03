@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ficheros6",
+            "request": "launch",
+            "mainClass": "tema8.ficheros6",
+            "projectName": "practicasjava"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

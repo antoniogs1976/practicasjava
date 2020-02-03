@@ -10,7 +10,7 @@ public class Agenda {
 
     public static void main(String[] args) {
         ArrayList<String> listaContactos = new ArrayList<String>();
-        Scanner entrada = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in, "ISO-8859-1");
         int opcion;
         int numContactos = 0;
         // leer la lista de contactos

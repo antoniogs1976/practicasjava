@@ -13,12 +13,12 @@ public class InfoArchivo {
     public static void info(String archivo) {
         File fichero = new File(archivo);
         System.out.println("##···················· INFORMACIÓN DEL ARCHIVO ····················##");
-        System.out.println("##  Archivo            : " + fichero.getName());
-        System.out.println("##  Path               : " + fichero.getPath());
-        System.out.println("##  Path Absoluto:     : " + fichero.getAbsolutePath());
-        System.out.println("##  Path Superior      : " + fichero.getParent());
-        System.out.println("##·································································##");
         if (fichero.exists()) {
+            System.out.println("##  Archivo            : " + fichero.getName());
+            System.out.println("##  Path               : " + fichero.getPath());
+            System.out.println("##  Path Absoluto:     : " + fichero.getAbsolutePath());
+            System.out.println("##  Path Superior      : " + fichero.getParent());
+            System.out.println("##·································································##");
             System.out.println("##  Existe             : " + SI + "                                        ##");
             if (fichero.canWrite()){
                 System.out.println("##  ¿Se puede escribir?: " + SI + "                                        ##");
@@ -37,7 +37,7 @@ public class InfoArchivo {
             }
             System.out.println("    Tamaño en bytes    : " + fichero.length());
         } else {
-            System.out.println("##     El archivo no existe y no se puede ver su información     ##");
+            System.out.println("##      El archivo no existe y no se puede ver su información      ##");
         }
         System.out.println("##·································································##");
     }
@@ -47,8 +47,12 @@ public class InfoArchivo {
         String nombreCompleto = directorioBase+"/"+baseNombre;
         for (int i=1; i <= numeroCarpetas;i++){
             carpeta = new File(nombreCompleto+i);
-            carpeta.mkdir();
-            System.out.println("Carpeta "+nombreCompleto+i+" creada");
+            if (carpeta.exists()){
+                System.out.println("Carpeta ya existe. No se crea.");
+            } else {
+                carpeta.mkdir();
+                System.out.println("Carpeta "+nombreCompleto+i+" creada");
+            }
         }
     }
 

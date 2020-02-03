@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class LibreriaAgenda {
 
-    private static final String NOMBRE_ARCHIVO = "c:/datos/contactos.txt";
+    private static final String NOMBRE_ARCHIVO = "datos/contactos.txt";
     private static boolean cambios = false;
 
     /**

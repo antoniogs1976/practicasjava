@@ -11,18 +11,18 @@ import miscosas.Utilidades;
 public class ficheros5 {
 
     public static void main(String[] args) {
-        File fichero = new File("c:/datos/contactos2.txt");
+        File archivo = new File("datos/contactos2.txt");
 
         Utilidades.limpiarPantalla();
-        // crear fichero
+        // crear archivo
         try {
-            fichero.createNewFile();
+            archivo.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        InfoArchivo.info(fichero.getPath());
-        System.out.println(fichero.list());
-        // crear 5 carpetas en c:/datos con el nombre base de "cosa"
-        InfoArchivo.cearCarpetas(5, "c:/datos", "Cosa");
+        // info del archivo
+        InfoArchivo.info(archivo.getAbsolutePath());
+        // crear 5 carpetas en datos con el nombre base de "cosa"
+        InfoArchivo.cearCarpetas(5, "datos", "Cosa");
     }
 }
