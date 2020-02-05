@@ -1,0 +1,6 @@
+clientes
+proveedores
+albaranes
+facturas
+productos
+servicios

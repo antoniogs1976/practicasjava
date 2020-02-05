@@ -94,11 +94,6 @@ public class ficheros6 {
                 if (cosa.isFile()) {
                     tamano = cosa.length();
                     churro = "Archivo:\t";
-                    //if (tamano == 0){
-                    //    //bytes = " bytes\t\t";
-                    //} else {
-                    //    bytes = " bytes\t";
-                    //}
                     totalArchivos++;
                     tamanoTotal += tamano;
                 } else if (cosa.isDirectory()) {

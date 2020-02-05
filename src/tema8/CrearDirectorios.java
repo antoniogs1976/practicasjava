@@ -9,32 +9,13 @@ import miscosas.Utilidades;
  * CrearDirectorios
  */
 public class CrearDirectorios {
-    
-    public static void crearMilCarpetas(int datoNumerico){
-        File carpeta = null;
-        String path = "c:/datos/"+datoNumerico+"/";
-        String prefijo;
-        long inicio = System.nanoTime();
-        for (int i = 1; i<=10000; i++ ){
-            if (i < 10){
-                prefijo = "0000";
-            } else if (i < 100){
-                prefijo = "000";
-            } else if (i < 1000){
-                prefijo = "00";
-            } else if (i < 10000){
-                prefijo = "0";
-            } else {
-                prefijo = "";
-            }
-            carpeta = new File(path+prefijo+i);
-            carpeta.mkdir();
-        }
-        long fin = System.nanoTime();
-        long ejecucion = (fin - inicio) / 1000000;
-        System.out.println(ejecucion+" ms en crear 1000 carpetas...");
-    }
 
+    /**
+     * Método para crear las carpetas necesarias para el proyecto/ejercicio
+     * 
+     * @param nombreCarpeta Nombre de la carpeta a crear
+     * @return              devuelve True si todo ha ido bien, False si ha ocurrido algún error
+     */
     public static boolean crearCarpeta(String nombreCarpeta) {
         boolean retorno = false;
         File carpeta = new File(nombreCarpeta);
@@ -52,10 +33,14 @@ public class CrearDirectorios {
                 retorno = false;
             }
         }
-
         return retorno;
     }
 
+    /**
+     * Método para mostrar un error si ocurre algo al crear una carpeta
+     * 
+     * @param nombreCarpeta Nombre de la carpeta para mostrar en el error
+     */
     public static void mostrarErrorCreacion(String nombreCarpeta) {
         System.out.println("Ha ocurrido un error al crear la carpeta " + nombreCarpeta);
     }
@@ -111,9 +96,6 @@ public class CrearDirectorios {
         } else {
             System.out.println("Ocurrió algún error...");
         }
-
-        // borrar esto y el método
-        crearMilCarpetas(dato);
 
         // cerrar el scanner
         entrada.close();
