@@ -6,17 +6,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.net.URLConnection;
 
 import miscosas.Utilidades;
 
 /**
- * PaginaWeb
+ * PaginaWeb2
  * 
- * lee una página web y la guarda en un fichero (sólo tipo texto y sin CSS ni
- * nada)
+ * lee una página web y la guarda en un fichero (sólo tipo texto y sin CSS ni nada)
+ * (reduce las instrucciones)
  */
-public class PaginaWeb {
+public class PaginaWeb2 {
 
     public static void main(String[] args) {
         final String RUTA_DESCARGAS = "/datos/webs/";
@@ -26,12 +25,12 @@ public class PaginaWeb {
         try {
             System.out.println("conectando a internet...");
             URL direccion = new URL("http://jumilla.org/");
-            URLConnection conexion = direccion.openConnection();
-            InputStream canalEntrada = conexion.getInputStream();
+            //URLConnection conexion = direccion.openConnection();
+            InputStream canalEntrada = direccion.openStream();
             InputStreamReader lector = new InputStreamReader(canalEntrada);
             BufferedReader entrada = new BufferedReader(lector);
             String linea = "";
-            FileWriter fichero = new FileWriter(RUTA_DESCARGAS+"jumilla.html");
+            FileWriter fichero = new FileWriter(RUTA_DESCARGAS+"jumilla2.html");
             PrintWriter salida = new PrintWriter(fichero);
             long inicio2 = System.nanoTime();
             do{

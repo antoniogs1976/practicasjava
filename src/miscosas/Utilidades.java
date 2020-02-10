@@ -50,9 +50,9 @@ public class Utilidades {
      * @param tiempoFin    System.nanoTime() de fin
      * @return el tiempo que ha tardado en milisegundos
      */
-    public static long medirTiempoEjecucion(Long tiempoInicio, Long tiempoFin) {
+    public static String medirTiempoEjecucion(String proceso, Long tiempoInicio, Long tiempoFin) {
         // como se usan nanosegundos, dividir entre 1 millón el resultado
-        return (tiempoFin - tiempoInicio) / 1000000;
+        return "Proceso: "+ proceso + " | Tiempo de ejecución: "+ ((tiempoFin - tiempoInicio) / 1000000)+"ms.";
     }
 
     /**
