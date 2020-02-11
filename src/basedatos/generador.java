@@ -3,7 +3,6 @@ package basedatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-
 import miscosas.Utilidades;
 
 /**
@@ -19,6 +18,8 @@ public class generador {
         String usuario = "F5DQRpnXfM";
         String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
         int cosa =0;
+        String strTelefono;
+        String strNombre;
         try {
             System.out.println("Conectando...");
             Class.forName(driver);
@@ -29,12 +30,26 @@ public class generador {
             Statement stmt = con.createStatement();
             long inicio = System.nanoTime();
             for (int i = 1; i <= 100; i++) {
-                cosa = stmt.executeUpdate("INSERT INTO agenda(codigo, nombre, telefono) VALUES ("+i+",'Contacto "+i+"','"+i+"')");
-                //System.out.print(".");
+                if (i < 10){
+                    strNombre = "Contacto 00"+i;
+                    strTelefono = "60900000"+i;
+                } else if (i < 100){
+                    strNombre = "Contacto 0"+i;
+                    strTelefono = "6090000"+i;
+                } else {
+                    strNombre = "Contacto "+i;
+                    strTelefono = "609000"+i;
+                }
+                cosa = stmt.executeUpdate("INSERT INTO agenda(cod, nombre, telefono) VALUES ("+i+",'"+strNombre+"','"+strTelefono+"')");
+                if (i < 100){
+                    System.out.print(".");
+                } else {
+                    System.out.println(".");
+                }
             }
             long fin = System.nanoTime();
             if (cosa != 0){
-                System.out.println("Operación realizada. Se han añadido "+cosa+" registros.");
+                System.out.println("Operación realizada con éxito");
             } else {
                 System.out.println("No hay nada que hacer");
             }
