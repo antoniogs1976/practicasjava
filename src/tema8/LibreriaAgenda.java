@@ -48,13 +48,12 @@ public class LibreriaAgenda {
     /**
      * Método para dibujar el menú principal
      * 
-     * @param entradaDatos Scanner para la introducción de datos (opción del menú)
-     * @return int con la opción elegida
+     * @param numeroContactos Número de contactos en la base de datos
      */
     public static void menu(int numeroContactos) {
         LibreriaAgenda.limpiarPantalla();
         System.out.println("############################################################");
-        System.out.println("##                        JAVAGENDA                       ##");
+        System.out.println("##                       JAVAGENDA BD                     ##");
         System.out.println("############################################################");
         System.out.println("##  1.- Añadir un contacto                                ##");
         System.out.println("##  2.- Borrar un contacto                                ##");
