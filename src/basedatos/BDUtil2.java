@@ -5,14 +5,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
- * BDUtil
+ * BDUtil2
  * 
- * Utilidades para conectar a base de datos
+ * Métodos y utilidades varias para la conexión y gestión de la base de datos de
+ * contactos
  */
-public class BDUtil {
+public class BDUtil2 {
+
+    // ------------------------------------------------------------------------
+    // MÉTODOS PARA CONEXION A BBDD -------------------------------------------
+    // ------------------------------------------------------------------------
 
     /**
      * Método para crear una conexión a una base de datos
@@ -47,21 +51,31 @@ public class BDUtil {
         }
     }
 
+    // ------------------------------------------------------------------------
+    // MÉTODOS DE GESTIÓN DE LA BBDD ------------------------------------------
+    // ------------------------------------------------------------------------
+
     /**
      * Método para dar de alta un contacto en la agenda
      * 
      * @param con      Connection sobre la que realizar la consulta
      * @param contacto Contacto con los datos del contacto
+     * @return devuelve TRUE si ha salido bien, FALSE si hay algún error
      */
-    public static void alta(Connection con, Contacto contacto) {
+    public static boolean alta(Connection con, Contacto contacto) {
+        boolean retorno;
         String consulta = String.format("INSERT INTO agenda (cod, nombre, telefono) VALUES (%d, %s, %s);",
                 contacto.getCodigo(), contacto.getNombre(), contacto.getTelefono());
         try {
             Statement stmt = con.createStatement();
             stmt.executeUpdate(consulta);
+            retorno = true;
         } catch (Exception e) {
             mostrarError(e);
+            retorno = false;
         }
+        return retorno;
+
     }
 
     /**
@@ -69,14 +83,19 @@ public class BDUtil {
      * 
      * @param con    Connection sobre la que realizar la consulta
      * @param codigo integer con el código (cod) del contacto a dar de baja
+     * @return devuelve TRUE si ha salido bien, FALSE si hay algún error
      */
-    public static void baja(Connection con, int codigo) {
+    public static boolean baja(Connection con, int codigo) {
+        boolean retorno;
         try {
             Statement stmt = con.createStatement();
             stmt.executeUpdate("DELETE FROM agenda WHERE cod =" + codigo + ";");
+            retorno = true;
         } catch (Exception e) {
             mostrarError(e);
+            retorno = false;
         }
+        return retorno;
     }
 
     /**
@@ -84,20 +103,21 @@ public class BDUtil {
      * 
      * @param con      Connection sobre la que realizar la consulta
      * @param contacto Contacto con los datos del contacto
+     * @return devuelve TRUE si ha salido bien, FALSE si hay algún error
      */
-    public static void modificar(Connection con, Contacto contacto) {
-        int codigo = contacto.getCodigo();
-        String nombre = contacto.getNombre();
-        String telefono = contacto.getTelefono();
-        String consulta;
-        consulta = String.format("UPDATE agenda SET cod=%d, nombre='%s', telefono='%s' WHERE cod=%d;", codigo, nombre,
-                telefono, codigo);
+    public static boolean modificar(Connection con, Contacto contacto) {
+        boolean retorno;
+        String consulta = String.format("UPDATE agenda SET cod=%d, nombre='%s', telefono='%s' WHERE cod=%d;",
+                contacto.getCodigo(), contacto.getNombre(), contacto.getTelefono(), contacto.getCodigo());
         try {
             Statement stmt = con.createStatement();
             stmt.executeUpdate(consulta);
+            retorno = true;
         } catch (Exception e) {
             mostrarError(e);
+            retorno = false;
         }
+        return retorno;
     }
 
     /**
@@ -122,18 +142,9 @@ public class BDUtil {
         return listado;
     }
 
-    /**
-     * Método para aceptar sólo una tecla para continuar
-     * 
-     * @param entradaDatos Scanner para la entrada de datos
-     */
-    public static void pulsarTecla(Scanner entradaDatos, char teclaAPulsar) {
-        char tecla;
-        do {
-            System.out.println("(pulsa " + teclaAPulsar + " y presiona Enter para volver al menú)");
-            tecla = entradaDatos.next().toUpperCase().charAt(0);
-        } while (tecla != teclaAPulsar);
-    }
+    // ------------------------------------------------------------------------
+    // OTROS MÉTODOS ----------------------------------------------------------
+    // ------------------------------------------------------------------------
 
     /**
      * Método para mostrar los errores de las excepciones
@@ -152,11 +163,11 @@ public class BDUtil {
      * @param con Connection sobre la que realizar la consulta
      * @return entero con el número de filas/registros
      */
-    public static int contarRegistros(Connection con) {
+    public static int numeroRegistros(Connection con) {
         int numRegistros = 0;
         try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT COUNT(*) AS rowcount FROM agenda;");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS rowcount FROM agenda;");
             rs.next();
             numRegistros = rs.getInt("rowcount");
             rs.close();
@@ -166,85 +177,38 @@ public class BDUtil {
         return numRegistros;
     }
 
-    public static void ajustarCodigoAuto(Connection con) {
-        Contacto contacto = null;
-        int numRegistros = contarRegistros(con);
-        int contador = 1;
-        boolean control = true;
-        try {
-            for (int i = 1; i<=numRegistros;i++){
-                contacto = consultaCodigoContacto(con, i, control);
-                if (control){
-                    contacto.setCodigo(contador);
-                    modificar(con, contacto);
-                    contador++;
-                }
-            }
-
-        } catch (Exception e) {
-            mostrarError(e);
-        }
-    }
-
     /**
-     * Método para hacer consultas sobre el campo NOMBRE de la agenda
+     * Método para ajustar el campo código (COD) de la base de datos. Cada vez que
+     * se elimina algún contacto, el campo código (que sería autonumérico), debería
+     * actualizarse, pero no hemos usado esa opción en la BBDD y lo vamos a realizar
+     * a mano.
      * 
-     * @param con           Connection sobre la que realizar la consulta
-     * @param cadenaABuscar String con la parte del nombre que se quiere buscar
-     * @return ArrayList<Contacto> con las coincidencias
+     * Necesitamos:
+     * 1.- conexión sobre la que realizar la consulta.
+     * 2.- lista de contactos con el código original
+     * 
+     * Devuelve (o debería devolver...):
+     * 1.- lista de contactos con el código cambiado
      */
-    public static ArrayList<Contacto> consultaNombre(Connection con, String cadenaABuscar) {
+    public static void cambiarCodigoContactos(Connection con){
         ArrayList<Contacto> listado = new ArrayList<>();
-        String str = "%" + cadenaABuscar + "%";
-        String consulta = String.format("SELECT * FROM agenda WHERE nombre LIKE '%s';", str);
         try {
+            int contador = 1;
             Contacto dummy = null;
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(consulta);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM agenda;");
             while (rs.next()) {
-                dummy = new Contacto(rs.getInt(1), rs.getString(2), rs.getString(3));
+                dummy = new Contacto(contador, rs.getString(2), rs.getString(3)); // aquí cambiamos el código ya
                 listado.add(dummy);
-            }
+                contador++;
+            }            
+            // Recorrer el ArrayList e ir devolviendo los resultados a la BBDD
+            
         } catch (Exception e) {
             mostrarError(e);
         }
-        return listado;
+
+        // return retorno;
     }
 
-    /**
-     * Método para hacer consultas sobre el campo COD de la agenda
-     * 
-     * @param con    Connection sobre la que realizar la consulta
-     * @param codigo integer código que se quiere buscar
-     * @return String con los datos de ese código
-     */
-    public static String consultaCodigo(Connection con, int codigo) {
-        String datosContacto = "";
-        try {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM agenda WHERE cod =" + codigo + ";");
-            while (rs.next()) {
-                datosContacto = rs.getInt(1) + "\t - " + rs.getString(2) + "\t - " + rs.getString(3);
-            }
-        } catch (Exception e) {
-            mostrarError(e);
-        }
-        return datosContacto;
-    }
-
-    public static Contacto consultaCodigoContacto(Connection con, int codigo, boolean control){
-        Contacto dummy = null;
-        String consulta = String.format("SELECT * FROM agenda WHERE cod=%d;", codigo);
-        control = false;
-        try {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(consulta);
-            dummy = new Contacto(rs.getInt(1), rs.getString(2), rs.getString(3));
-            control = true;
-        } catch (Exception e) {
-            mostrarError(e);
-            control = false;
-        }
-        return dummy;
-    }
 }

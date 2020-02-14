@@ -15,7 +15,7 @@ public class AgendaBD {
      * Método para mostrar el menú principal de la aplicación
      */
     public static void menuPrincipal() {
-        Utilidades.limpiarPantalla();
+        //Utilidades.limpiarPantalla();
         System.out.println("============================================================");
         System.out.println("==                      JAVAGENDA BD                      ==");
         System.out.println("============================================================");
@@ -38,7 +38,7 @@ public class AgendaBD {
         int codigo;
         String nombre;
         String telefono;
-        Utilidades.limpiarPantalla();
+        //Utilidades.limpiarPantalla();
         entradaDatos.nextLine();
         System.out.println("============================================================");
         System.out.println("==           JAVAGENDA BD - AÑADIR UN CONTACTO            ==");
@@ -71,7 +71,7 @@ public class AgendaBD {
         ArrayList<Contacto> coincidencias = new ArrayList<>();
         String nombre;
         int codigo;
-        Utilidades.limpiarPantalla();
+        //Utilidades.limpiarPantalla();
         entradaDatos.nextLine();
         System.out.println("============================================================");
         System.out.println("==           JAVAGENDA BD - BORRAR UN CONTACTO            ==");
@@ -118,7 +118,7 @@ public class AgendaBD {
         int codigo;
         String nombre;
         String telefono;
-        Utilidades.limpiarPantalla();
+        //Utilidades.limpiarPantalla();
         entradaDatos.nextLine();
         System.out.println("============================================================");
         System.out.println("==          JAVAGENDA BD - MODIFICAR UN CONTACTO          ==");
@@ -149,7 +149,7 @@ public class AgendaBD {
         Scanner entrada = new Scanner(System.in); // para entrada de datos
         int opcion; // Opción del menú elegida
 
-        Contacto contacto = null;
+        Contacto contacto = new Contacto();
         ArrayList<Contacto> listaContactos = new ArrayList<>();
 
         // abrir conexion
@@ -175,6 +175,8 @@ public class AgendaBD {
             case 1: // Dar de alta un contacto en la agenda
                 menuAlta(entrada, con, contacto);
                 BDUtil.alta(con, contacto);
+                // actualizar los datos (codigo)
+                BDUtil.ajustarCodigoAuto(con);
                 System.out.println("Operación realizada");
                 BDUtil.pulsarTecla(entrada, 'V');
                 break;
@@ -182,11 +184,15 @@ public class AgendaBD {
                 int resultado=menuBorrar(entrada, con);
                 if (resultado != -1){
                     BDUtil.baja(con, resultado);
+                    // actualizar
+                    BDUtil.ajustarCodigoAuto(con);
                 }
                 break;
             case 3: // Modificar un contacto de la agenda
                 Contacto tmp = menuModificar(entrada, con);
                 BDUtil.modificar(con, tmp);
+                // actualizar los datos (codigo)
+                BDUtil.ajustarCodigoAuto(con);
                 System.out.println("Operación realizada");
                 BDUtil.pulsarTecla(entrada, 'V');
                 break;
