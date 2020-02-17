@@ -14,6 +14,10 @@ import java.util.Scanner;
  */
 public class BDUtil {
 
+    // -------------------------------------------------------------------------
+    // MÉTODOS PARA LA CONEXION A LA BBDD -------------------------------------
+    // -------------------------------------------------------------------------
+
     /**
      * Método para crear una conexión a una base de datos
      * 
@@ -24,7 +28,7 @@ public class BDUtil {
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
         String usuario = "F5DQRpnXfM";
-        String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
+        String password = "LzbcX6JCLx"; // <--------- INSERTAR AQUÍ EL PASSWORD
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url, usuario, password);
@@ -47,6 +51,10 @@ public class BDUtil {
         }
     }
 
+    // -------------------------------------------------------------------------
+    // MÉTODOS PARA LA GESTIÓN DE LA BBDD -------------------------------------
+    // -------------------------------------------------------------------------
+
     /**
      * Método para dar de alta un contacto en la agenda
      * 
@@ -54,7 +62,7 @@ public class BDUtil {
      * @param contacto Contacto con los datos del contacto
      */
     public static void alta(Connection con, Contacto contacto) {
-        String consulta = String.format("INSERT INTO agenda (cod, nombre, telefono) VALUES (%d, %s, %s);",
+        String consulta = String.format("INSERT INTO agenda (cod, nombre, telefono) VALUES (%d, '%s', '%s');",
                 contacto.getCodigo(), contacto.getNombre(), contacto.getTelefono());
         try {
             Statement stmt = con.createStatement();
@@ -71,9 +79,10 @@ public class BDUtil {
      * @param codigo integer con el código (cod) del contacto a dar de baja
      */
     public static void baja(Connection con, int codigo) {
+        String consulta = String.format("DELETE FROM agenda WHERE cod = %d;", codigo);
         try {
             Statement stmt = con.createStatement();
-            stmt.executeUpdate("DELETE FROM agenda WHERE cod =" + codigo + ";");
+            stmt.executeUpdate(consulta);
         } catch (Exception e) {
             mostrarError(e);
         }
@@ -123,30 +132,6 @@ public class BDUtil {
     }
 
     /**
-     * Método para aceptar sólo una tecla para continuar
-     * 
-     * @param entradaDatos Scanner para la entrada de datos
-     */
-    public static void pulsarTecla(Scanner entradaDatos, char teclaAPulsar) {
-        char tecla;
-        do {
-            System.out.println("(pulsa " + teclaAPulsar + " y presiona Enter para volver al menú)");
-            tecla = entradaDatos.next().toUpperCase().charAt(0);
-        } while (tecla != teclaAPulsar);
-    }
-
-    /**
-     * Método para mostrar los errores de las excepciones
-     * 
-     * @param excepcion Exception a mostrar los errores
-     */
-    public static void mostrarError(Exception e) {
-        System.out.println("* ERROR: " + e.getMessage());
-        System.out.println("* CAUSA: " + e.getCause());
-        e.getStackTrace();
-    }
-
-    /**
      * Método que devuelve el número de filas en una tabla
      * 
      * @param con Connection sobre la que realizar la consulta
@@ -157,33 +142,14 @@ public class BDUtil {
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT COUNT(*) AS rowcount FROM agenda;");
-            rs.next();
-            numRegistros = rs.getInt("rowcount");
+            if (rs.next()) {
+                numRegistros = rs.getInt(1);
+            }
             rs.close();
         } catch (Exception e) {
             mostrarError(e);
         }
         return numRegistros;
-    }
-
-    public static void ajustarCodigoAuto(Connection con) {
-        Contacto contacto = null;
-        int numRegistros = contarRegistros(con);
-        int contador = 1;
-        boolean control = true;
-        try {
-            for (int i = 1; i<=numRegistros;i++){
-                contacto = consultaCodigoContacto(con, i, control);
-                if (control){
-                    contacto.setCodigo(contador);
-                    modificar(con, contacto);
-                    contador++;
-                }
-            }
-
-        } catch (Exception e) {
-            mostrarError(e);
-        }
     }
 
     /**
@@ -212,7 +178,8 @@ public class BDUtil {
     }
 
     /**
-     * Método para hacer consultas sobre el campo COD de la agenda
+     * Método para hacer consultas sobre el campo COD de la agenda para mostrar las
+     * coincidencias a la hora de dar de baja algún contacto
      * 
      * @param con    Connection sobre la que realizar la consulta
      * @param codigo integer código que se quiere buscar
@@ -232,7 +199,19 @@ public class BDUtil {
         return datosContacto;
     }
 
-    public static Contacto consultaCodigoContacto(Connection con, int codigo, boolean control){
+    /**
+     * Método para hacer consultas en la BBDD sobre el campo COD
+     * 
+     * @param con     <code>java.sql.Connection</code> sobre la que realizar la
+     *                cosulta.
+     * @param codigo  <code>int</code> con el valor del campo código a buscar.
+     * @param control <code>boolean</code> para tener el control de la operación.
+     *                <code>true</code> si todo va bien, <code>false</code> si hay
+     *                algún error. Este parámetro es una variable del programa
+     *                principal.
+     * @return <code>Contacto</code> con los datos correspondientes a ese código.
+     */
+    public static Contacto consultaCodigoContacto(Connection con, int codigo, boolean control) {
         Contacto dummy = null;
         String consulta = String.format("SELECT * FROM agenda WHERE cod=%d;", codigo);
         control = false;
@@ -246,5 +225,32 @@ public class BDUtil {
             control = false;
         }
         return dummy;
+    }
+
+    // -------------------------------------------------------------------------
+    // OTROS MÉTODOS Y UTILIDADES ---------------------------------------------
+    // -------------------------------------------------------------------------
+
+    /**
+     * Método para aceptar sólo una tecla para continuar
+     * 
+     * @param entradaDatos Scanner para la entrada de datos
+     */
+    public static void pulsarTecla(Scanner entradaDatos, char teclaAPulsar) {
+        char tecla;
+        do {
+            System.out.println("(pulsa " + teclaAPulsar + " y presiona Enter para volver al menú)");
+            tecla = entradaDatos.next().toUpperCase().charAt(0);
+        } while (tecla != teclaAPulsar);
+    }
+
+    /**
+     * Método para mostrar los errores de las excepciones
+     * 
+     * @param excepcion Exception a mostrar los errores
+     */
+    public static void mostrarError(Exception e) {
+        System.out.println("* ERROR: " + e.getMessage());
+        e.getStackTrace();
     }
 }

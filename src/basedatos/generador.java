@@ -16,7 +16,7 @@ public class generador {
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
         String usuario = "F5DQRpnXfM";
-        String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
+        String password = "LzbcX6JCLx"; // <--------- INSERTAR AQUÍ EL PASSWORD
         int cosa =0;
         String strTelefono;
         String strNombre;
