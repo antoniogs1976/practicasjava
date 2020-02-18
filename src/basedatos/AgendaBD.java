@@ -2,6 +2,7 @@ package basedatos;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 import miscosas.Utilidades;
@@ -15,14 +16,16 @@ public class AgendaBD {
      * Método para mostrar el menú principal de la aplicación
      */
     public static void menuPrincipal() {
-        // Utilidades.limpiarPantalla();
+        Utilidades.limpiarPantalla();
         System.out.println("################################################################################");
         System.out.println("##                  JavAgendaDB - Base de Datos de Contactos                  ##");
         System.out.println("################################################################################");
         System.out.println("##  1.- Añadir un contacto a la Base de Datos                                 ##");
         System.out.println("##  2.- Borrar un contacto de la Base de Datos                                ##");
         System.out.println("##  3.- Editar un contacto de la Base de Datos                                ##");
-        System.out.println("##  4.- Consultar contactos en la Base de Datos                               ##");
+        System.out.println("##  4.- Buscar un contacto de la Base de Datos                                ##");
+        System.out.println("##  ------------------------------------------------------------------------  ##");
+        System.out.println("##  5.- Listar todos los contactos de la Base de Datos                        ##");
         System.out.println("################################################################################");
         System.out.println("##  9.- Salir de JAVAGENDA BD                                                 ##");
         System.out.println("################################################################################");
@@ -34,12 +37,15 @@ public class AgendaBD {
      * @param entradaDatos Scanner para la introducción de datos
      * @param con          Connection sobre la que realizar la consulta
      * @param contacto     Contacto en el que almacenar los datos
+     * @return Devuelve <code>true</code> si todo ha ido bien, <code>false</code> en
+     *         caso de error.
      */
-    public static void menuAlta(Scanner entradaDatos, Connection con, Contacto contacto) {
-        int codigo;
+    public static boolean menuAlta(Scanner entradaDatos, Connection con, Contacto contacto) {
+        boolean resultado = false;
+        int codigo = 1;
         String nombre;
         String telefono;
-        // Utilidades.limpiarPantalla();
+        Utilidades.limpiarPantalla();
         entradaDatos.nextLine();
         System.out.println("################################################################################");
         System.out.println("##                     JavAgendaDB - Dar de Alta Contacto                     ##");
@@ -58,11 +64,15 @@ public class AgendaBD {
             tecla = entradaDatos.next().toUpperCase().charAt(0);
         } while (tecla != 'S' && tecla != 'N');
         if (tecla == 'S') {
-            codigo = BDUtil.contarRegistros(con) + 1;
+            codigo += BDUtil.contarRegistros(con);
             contacto.setCodigo(codigo);
             contacto.setNombre(nombre);
             contacto.setTelefono(telefono);
+            resultado = true;
+        } else {
+            resultado = false;
         }
+        return resultado;
     }
 
     /**
@@ -70,14 +80,14 @@ public class AgendaBD {
      * 
      * @param entradaDatos Scanner para la entrada de datos
      * @param con          Connection sobre la que realizar la consulta
-     * @return Int devuelve el código del contacto que se quiere dar de baja, o -1
-     *         si hay algún error
+     * @return devuelve el código <code>integer</code> del contacto que se quiere
+     *         dar de baja, o <code>-1</code> si hay algún error
      */
     public static int menuBorrar(Scanner entradaDatos, Connection con) {
         ArrayList<Contacto> coincidencias = new ArrayList<>();
         String nombre;
         int codigo;
-        // Utilidades.limpiarPantalla();
+        Utilidades.limpiarPantalla();
         entradaDatos.nextLine();
         System.out.println("################################################################################");
         System.out.println("##                     JavAgendaDB - Dar de Baja Contacto                     ##");
@@ -115,7 +125,7 @@ public class AgendaBD {
      * 
      * @param entradaDatos Scanner para la entrada de datos
      * @param con          Connection sobre la que realizar la consulta
-     * @return Contacto con los datos modificados
+     * @return <code>Contacto</code> con los datos modificados
      */
     public static Contacto menuModificar(Scanner entradaDatos, Connection con) {
         ArrayList<Contacto> coincidencias = new ArrayList<>();
@@ -123,7 +133,7 @@ public class AgendaBD {
         int codigo;
         String nombre;
         String telefono;
-        // Utilidades.limpiarPantalla();
+        Utilidades.limpiarPantalla();
         entradaDatos.nextLine();
         System.out.println("################################################################################");
         System.out.println("##                JavAgendaDB - Modificar Datos de un Contacto                ##");
@@ -132,7 +142,6 @@ public class AgendaBD {
         nombre = entradaDatos.nextLine();
         System.out.println("##  ====================          COINCIDENCIAS         ====================  ##");
         coincidencias = BDUtil.consultaNombre(con, nombre);
-
         for (int i = 0; i < coincidencias.size(); i++) {
             System.out.println(coincidencias.get(i).getDatos());
         }
@@ -150,7 +159,44 @@ public class AgendaBD {
         return contacto;
     }
 
-    public static void pantallaSalida(){
+    /**
+     * Método para mostrar el menú de buscar contactos Sólo los muestra por
+     * pantalla.
+     * 
+     * @param entrada <code>Scanner</code> para la entrada de datos.
+     * @param con     <code>java.sql.Connection</code> sobre la que realizar la
+     *                cosulta.
+     */
+    public static void menuBuscar(Scanner entrada, Connection con) {
+        String cadena;
+        char tecla;
+        ArrayList<Contacto> coincidencias = new ArrayList<>();
+        do {
+            Utilidades.limpiarPantalla();
+            entrada.nextLine();
+            System.out.println("################################################################################");
+            System.out.println("##              JavAgendaDB - Buscar Contacto en la Base de Datos             ##");
+            System.out.println("################################################################################");
+            System.out.println("Por favor, introduce un patrón a buscar en la base de datos:");
+            System.out.println("(puede ser nombre (ant, cosa, pep, etc...) o teléfono (646, 6589, etc...))");
+            cadena = entrada.nextLine();
+            coincidencias = BDUtil.buscarContacto(con, cadena);
+            System.out.println("##  ====================          COINCIDENCIAS         ====================  ##");
+            for (int i = 0; i < coincidencias.size(); i++) {
+                System.out.println(coincidencias.get(i).getDatos());
+            }
+            // repetir búsqueda o salir al menu
+            do {
+                System.out.println("Pulsa B para volver a Buscar, o V para Volver al menú principal: ");
+                tecla = entrada.next().toUpperCase().charAt(0);
+            } while (tecla != 'B' && tecla != 'V');
+        } while (tecla != 'V');
+    }
+
+    /**
+     * Método que dibuja la "pantalla" de salida del programa
+     */
+    public static void pantallaSalida() {
         Utilidades.limpiarPantalla();
         System.out.println("################################################################################");
         System.out.println("##                                                                            ##");
@@ -162,8 +208,10 @@ public class AgendaBD {
     }
 
     public static void main(String[] args) {
+        Locale loc = new Locale("es", "ES");
         // Scanner par la entrada de datos
-        Scanner entrada = new Scanner(System.in); // para entrada de datos
+        Scanner entrada = new Scanner(System.in, "UTF-8"); // para entrada de datos
+        entrada.useLocale(loc);
         int opcion; // Opción del menú elegida
 
         Contacto contacto = new Contacto();
@@ -174,7 +222,6 @@ public class AgendaBD {
         if (con != null) {
             System.out.println("Conexión establecida con éxito");
         }
-
         // dibujamos el menú principal en bucle
         do {
             menuPrincipal();
@@ -189,36 +236,45 @@ public class AgendaBD {
 
             // vamos llamando cosas
             switch (opcion) {
-            case 1: // Dar de alta un contacto en la agenda
-                menuAlta(entrada, con, contacto);
-                BDUtil.alta(con, contacto);
-                // actualizar los datos (codigo)
-                System.out.println("Operación realizada");
-                BDUtil.pulsarTecla(entrada, 'V');
-                break;
-            case 2: // Eliminar un contacto de la agenda
-                int resultado = menuBorrar(entrada, con);
-                if (resultado != -1) {
-                    BDUtil.baja(con, resultado);
-                    // actualizar
-                }
-                break;
-            case 3: // Modificar un contacto de la agenda
-                Contacto tmp = menuModificar(entrada, con);
-                BDUtil.modificar(con, tmp);
-                // actualizar los datos (codigo)
-                System.out.println("Operación realizada");
-                BDUtil.pulsarTecla(entrada, 'V');
-                break;
-            case 4: // Ver los contactos de la agenda
-                listaContactos = BDUtil.consulta(con);
-                // mostrar los contactos en plan listado
-                for (int i = 0; i < listaContactos.size(); i++) {
-                    System.out.println(listaContactos.get(i).getDatos());
-                }
-                System.out.println("Operación realizada");
-                BDUtil.pulsarTecla(entrada, 'V');
-                break;
+                case 1: // Dar de alta un contacto en la agenda
+                    if (menuAlta(entrada, con, contacto)) {
+                        BDUtil.alta(con, contacto);
+                        System.out.println("Operación realizada.");
+                    } else {
+                        System.out.println("Operación cancelada.");
+                    }
+                    BDUtil.pulsarTecla(entrada, 'V');
+                    break;
+                case 2: // Eliminar un contacto de la agenda
+                    int resultado = menuBorrar(entrada, con);
+                    if (resultado != -1) {
+                        if (BDUtil.existeCodigo(con, resultado)) {
+                            BDUtil.baja(con, resultado);
+                        } else {
+                            System.out.println("El código suministrado no existe.");
+                        }
+                        // actualizar
+                    }
+                    break;
+                case 3: // Modificar un contacto de la agenda
+                    Contacto tmp = menuModificar(entrada, con);
+                    BDUtil.modificar(con, tmp);
+                    // actualizar los datos (codigo)
+                    System.out.println("Operación realizada");
+                    BDUtil.pulsarTecla(entrada, 'V');
+                    break;
+                case 4: // Buscar un contacto en la agenda
+                    menuBuscar(entrada, con);
+                    break;
+                case 5: // Ver los contactos de la agenda
+                    listaContactos = BDUtil.consulta(con);
+                    // mostrar los contactos en plan listado
+                    for (int i = 0; i < listaContactos.size(); i++) {
+                        System.out.println(listaContactos.get(i).getDatos());
+                    }
+                    System.out.println("Operación realizada");
+                    BDUtil.pulsarTecla(entrada, 'V');
+                    break;
             }
         } while (opcion != 9);
         // mostrar la pantalla de despedida.

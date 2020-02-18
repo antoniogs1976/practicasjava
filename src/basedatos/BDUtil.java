@@ -61,15 +61,19 @@ public class BDUtil {
      * @param con      Connection sobre la que realizar la consulta
      * @param contacto Contacto con los datos del contacto
      */
-    public static void alta(Connection con, Contacto contacto) {
+    public static boolean alta(Connection con, Contacto contacto) {
+        boolean resultado = false;
         String consulta = String.format("INSERT INTO agenda (cod, nombre, telefono) VALUES (%d, '%s', '%s');",
                 contacto.getCodigo(), contacto.getNombre(), contacto.getTelefono());
         try {
             Statement stmt = con.createStatement();
-            stmt.executeUpdate(consulta);
+            if (stmt.executeUpdate(consulta) != 0){
+                resultado = true;
+            }
         } catch (Exception e) {
             mostrarError(e);
         }
+        return resultado;
     }
 
     /**
@@ -78,14 +82,18 @@ public class BDUtil {
      * @param con    Connection sobre la que realizar la consulta
      * @param codigo integer con el código (cod) del contacto a dar de baja
      */
-    public static void baja(Connection con, int codigo) {
+    public static boolean baja(Connection con, int codigo) {
+        boolean resultado = false;
         String consulta = String.format("DELETE FROM agenda WHERE cod = %d;", codigo);
         try {
             Statement stmt = con.createStatement();
-            stmt.executeUpdate(consulta);
+            if (stmt.executeUpdate(consulta) != 0){
+                resultado = true;
+            }
         } catch (Exception e) {
             mostrarError(e);
         }
+        return resultado;
     }
 
     /**
@@ -94,7 +102,8 @@ public class BDUtil {
      * @param con      Connection sobre la que realizar la consulta
      * @param contacto Contacto con los datos del contacto
      */
-    public static void modificar(Connection con, Contacto contacto) {
+    public static boolean modificar(Connection con, Contacto contacto) {
+        boolean resultado = false;
         int codigo = contacto.getCodigo();
         String nombre = contacto.getNombre();
         String telefono = contacto.getTelefono();
@@ -103,10 +112,13 @@ public class BDUtil {
                 telefono, codigo);
         try {
             Statement stmt = con.createStatement();
-            stmt.executeUpdate(consulta);
+            if (stmt.executeUpdate(consulta) != 0){
+                resultado = true;
+            }
         } catch (Exception e) {
             mostrarError(e);
         }
+        return resultado;
     }
 
     /**
@@ -117,8 +129,8 @@ public class BDUtil {
      */
     public static ArrayList<Contacto> consulta(Connection con) {
         ArrayList<Contacto> listado = new ArrayList<>();
+        Contacto dummy = null;
         try {
-            Contacto dummy = null;
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM agenda;");
             while (rs.next()) {
@@ -155,16 +167,45 @@ public class BDUtil {
     /**
      * Método para hacer consultas sobre el campo NOMBRE de la agenda
      * 
-     * @param con           Connection sobre la que realizar la consulta
-     * @param cadenaABuscar String con la parte del nombre que se quiere buscar
+     * @param con           <code>java.sql.Connection</code> sobre la que realizar
+     *                      la consulta.
+     * @param cadenaABuscar String con la parte del nombre que se quiere buscar.
      * @return ArrayList<Contacto> con las coincidencias
      */
     public static ArrayList<Contacto> consultaNombre(Connection con, String cadenaABuscar) {
         ArrayList<Contacto> listado = new ArrayList<>();
         String str = "%" + cadenaABuscar + "%";
         String consulta = String.format("SELECT * FROM agenda WHERE nombre LIKE '%s';", str);
+        Contacto dummy = null;
         try {
-            Contacto dummy = null;
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(consulta);
+            while (rs.next()) {
+                dummy = new Contacto(rs.getInt(1), rs.getString(2), rs.getString(3));
+                listado.add(dummy);
+            }
+        } catch (Exception e) {
+            mostrarError(e);
+        }
+        return listado;
+    }
+
+    /**
+     * Método para realizar búsquedas en la base de datos. Busca en los dos campos
+     * de la agenda (nombre y teléfono).
+     * 
+     * @param con           <code>java.sql.Connection</code> sobre la que hacer la
+     *                      consulta.
+     * @param cadenaABuscar <code>String</code> con la cadena a buscar.
+     * @return <code>Arraylist<Contacto></code> con las coincidencias de la búsqueda
+     */
+    public static ArrayList<Contacto> buscarContacto(Connection con, String cadenaABuscar) {
+        ArrayList<Contacto> listado = new ArrayList<>();
+        String str = "%" + cadenaABuscar + "%";
+        String consulta = String.format("SELECT * FROM agenda WHERE (nombre LIKE '%s') OR (telefono like '%s');", str,
+                str);
+        Contacto dummy = null;
+        try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(consulta);
             while (rs.next()) {
@@ -179,7 +220,10 @@ public class BDUtil {
 
     /**
      * Método para hacer consultas sobre el campo COD de la agenda para mostrar las
-     * coincidencias a la hora de dar de baja algún contacto
+     * coincidencias a la hora de dar de baja algún contacto. En este caso sólo
+     * devuelve por pantalla todos los contactos que coinciden con el patrón de
+     * búsqueda, no devuelve un objeto de tipo <code>Contacto</code> como sería de
+     * esperar.
      * 
      * @param con    Connection sobre la que realizar la consulta
      * @param codigo integer código que se quiere buscar
@@ -252,5 +296,30 @@ public class BDUtil {
     public static void mostrarError(Exception e) {
         System.out.println("* ERROR: " + e.getMessage());
         e.getStackTrace();
+    }
+
+    /**
+     * Método para comprobar que un código exite, a la hora de modificar o borrar un
+     * contacto
+     * 
+     * @param con    <code>java.sql.Connection</code> sobre la que hacer la
+     *               consulta.
+     * @param codigo <code>Integer</code> con el código a comprobar.
+     * @return Devuelve <code>true</code> si el código existe, <code>false</code> si
+     *         el código no existe.
+     */
+    public static boolean existeCodigo(Connection con, int codigo) {
+        boolean encontrado = false;
+        String consulta = String.format("SELECT cod FROM agenda WHERE cod=%d;", codigo);
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(consulta);
+            if (rs.next()) {
+                encontrado = true;
+            }
+        } catch (Exception e) {
+            mostrarError(e);
+        }
+        return encontrado;
     }
 }

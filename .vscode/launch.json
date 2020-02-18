@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - AgendaBD",
+            "request": "launch",
+            "mainClass": "basedatos.AgendaBD",
+            "projectName": "practicasjava"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - conexion",
             "request": "launch",
             "mainClass": "basedatos.conexion",
