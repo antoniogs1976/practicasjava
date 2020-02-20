@@ -3,6 +3,8 @@ package basedatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Random;
+
 import miscosas.Utilidades;
 
 /**
@@ -13,42 +15,57 @@ import miscosas.Utilidades;
 public class generador {
 
     public static void main(String[] args) {
+        Random alea = new Random();
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
         String usuario = "F5DQRpnXfM";
-        String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
-        int cosa =0;
+        String password = "LzbcX6JCLx"; // <--------- INSERTAR AQUÍ EL PASSWORD
+        final String letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int cosa = 0;
+        int contador = 1;
+        int codigo = 1;
         String strTelefono;
         String strNombre;
+        Utilidades.limpiarPantalla();
         try {
             System.out.println("Conectando...");
             Class.forName(driver);
             Connection con = DriverManager.getConnection(url, usuario, password);
             System.out.println("Conectado con éxito");
             System.out.println("Consulta: generar 100 contactos para la Agenda");
+            System.out.println("# = código de contacto ya existe.");
+            System.out.println(". = código nuevo, creando contacto.");
+            System.out.println("--------------------------------------------------------------------------------");
             // generar aquí los usuarios:
             Statement stmt = con.createStatement();
             long inicio = System.nanoTime();
-            for (int i = 1; i <= 100; i++) {
-                if (i < 10){
-                    strNombre = "Contacto 00"+i;
-                    strTelefono = "60900000"+i;
-                } else if (i < 100){
-                    strNombre = "Contacto 0"+i;
-                    strTelefono = "6090000"+i;
-                } else {
-                    strNombre = "Contacto "+i;
-                    strTelefono = "609000"+i;
+            while (contador <= 100){
+                if(!BDUtil.existeCodigo(con, codigo)){
+                    strNombre = "";
+                    strTelefono = "";
+                    // Generar un nombre de 10 letras aleatorio
+                    for (int j = 1; j <= 10; j++) {
+                        strNombre += letras.charAt(alea.nextInt(letras.length()));
+                    }
+                    // Generar un número de teléfono de 9 cifras aleatorio
+                    for (int k = 1; k <= 9; k++) {
+                        strTelefono += alea.nextInt(9);
+                    }
+                    String consulta = String.format("INSERT INTO agenda(codigo, nombre, telefono) VALUES (%d, '%s', '%s');", codigo, strNombre, strTelefono);
+                    cosa = stmt.executeUpdate(consulta);
+                    if (contador < 100) {
+                        System.out.print(".");
+                    } else {
+                        System.out.println(".");
+                    }
+                    contador++;
+                } else{
+                    System.out.print("#");
                 }
-                cosa = stmt.executeUpdate("INSERT INTO agenda(cod, nombre, telefono) VALUES ("+i+",'"+strNombre+"','"+strTelefono+"')");
-                if (i < 100){
-                    System.out.print(".");
-                } else {
-                    System.out.println(".");
-                }
+                codigo++;
             }
             long fin = System.nanoTime();
-            if (cosa != 0){
+            if (cosa != 0) {
                 System.out.println("Operación realizada con éxito");
             } else {
                 System.out.println("No hay nada que hacer");

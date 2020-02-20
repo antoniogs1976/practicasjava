@@ -42,7 +42,7 @@ public class AgendaBD {
      */
     public static boolean menuAlta(Scanner entradaDatos, Connection con, Contacto contacto) {
         boolean resultado = false;
-        int codigo = 1;
+        int codigo;;
         String nombre;
         String telefono;
         Utilidades.limpiarPantalla();
@@ -50,6 +50,8 @@ public class AgendaBD {
         System.out.println("################################################################################");
         System.out.println("##                     JavAgendaDB - Dar de Alta Contacto                     ##");
         System.out.println("################################################################################");
+        codigo = BDUtil.contarRegistros(con) + 1;
+        System.out.println("Código (autogenerado): " + codigo);
         System.out.println("Por favor, introduce los datos del contacto.");
         System.out.print("Introduce el nombre (máximo 50 car.): ");
         nombre = entradaDatos.nextLine();
@@ -64,7 +66,6 @@ public class AgendaBD {
             tecla = entradaDatos.next().toUpperCase().charAt(0);
         } while (tecla != 'S' && tecla != 'N');
         if (tecla == 'S') {
-            codigo += BDUtil.contarRegistros(con);
             contacto.setCodigo(codigo);
             contacto.setNombre(nombre);
             contacto.setTelefono(telefono);
@@ -102,7 +103,7 @@ public class AgendaBD {
         for (int i = 0; i < coincidencias.size(); i++) {
             System.out.println(coincidencias.get(i).getDatos());
         }
-        System.out.println("################################################################################");
+        System.out.println("--------------------------------------------------------------------------------");
         System.out.print("Por favor, introduce el código del contacto a dar de baja: ");
         codigo = entradaDatos.nextInt();
         System.out.println("Vas a eliminar este contacto:");
@@ -150,7 +151,7 @@ public class AgendaBD {
         System.out.println("Vas a modificar este contacto:");
         System.out.println(BDUtil.consultaCodigo(con, codigo));
         entradaDatos.nextLine();
-        System.out.println("################################################################################");
+        System.out.println("--------------------------------------------------------------------------------");
         System.out.print("Introduce el nuevo nombre: ");
         nombre = entradaDatos.nextLine();
         System.out.print("Introduce el nuevo teléfono: ");
@@ -181,9 +182,13 @@ public class AgendaBD {
             System.out.println("(puede ser nombre (ant, cosa, pep, etc...) o teléfono (646, 6589, etc...))");
             cadena = entrada.nextLine();
             coincidencias = BDUtil.buscarContacto(con, cadena);
-            System.out.println("##  ====================          COINCIDENCIAS         ====================  ##");
-            for (int i = 0; i < coincidencias.size(); i++) {
-                System.out.println(coincidencias.get(i).getDatos());
+            if (coincidencias.size()==0){
+                System.out.println("##  ====================      NO HAY COINCIDENCIAS      ====================  ##");
+            } else {
+                System.out.println("##  ====================          COINCIDENCIAS         ====================  ##");
+                for (int i = 0; i < coincidencias.size(); i++) {
+                    System.out.println("    " + coincidencias.get(i).getDatos());
+                }
             }
             // repetir búsqueda o salir al menu
             do {
@@ -272,6 +277,7 @@ public class AgendaBD {
                     for (int i = 0; i < listaContactos.size(); i++) {
                         System.out.println(listaContactos.get(i).getDatos());
                     }
+                    System.out.println("--------------------------------------------------------------------------------");
                     System.out.println("Operación realizada");
                     BDUtil.pulsarTecla(entrada, 'V');
                     break;

@@ -63,7 +63,7 @@ public class BDUtil {
      */
     public static boolean alta(Connection con, Contacto contacto) {
         boolean resultado = false;
-        String consulta = String.format("INSERT INTO agenda (cod, nombre, telefono) VALUES (%d, '%s', '%s');",
+        String consulta = String.format("INSERT INTO agenda (codigo, nombre, telefono) VALUES (%d, '%s', '%s');",
                 contacto.getCodigo(), contacto.getNombre(), contacto.getTelefono());
         try {
             Statement stmt = con.createStatement();
@@ -84,7 +84,7 @@ public class BDUtil {
      */
     public static boolean baja(Connection con, int codigo) {
         boolean resultado = false;
-        String consulta = String.format("DELETE FROM agenda WHERE cod = %d;", codigo);
+        String consulta = String.format("DELETE FROM agenda WHERE codigo = %d;", codigo);
         try {
             Statement stmt = con.createStatement();
             if (stmt.executeUpdate(consulta) != 0){
@@ -108,7 +108,7 @@ public class BDUtil {
         String nombre = contacto.getNombre();
         String telefono = contacto.getTelefono();
         String consulta;
-        consulta = String.format("UPDATE agenda SET cod=%d, nombre='%s', telefono='%s' WHERE cod=%d;", codigo, nombre,
+        consulta = String.format("UPDATE agenda SET codigo=%d, nombre='%s', telefono='%s' WHERE codigo=%d;", codigo, nombre,
                 telefono, codigo);
         try {
             Statement stmt = con.createStatement();
@@ -150,10 +150,11 @@ public class BDUtil {
      * @return entero con el número de filas/registros
      */
     public static int contarRegistros(Connection con) {
-        int numRegistros = 0;
+        int numRegistros = 1;
+        String consulta = String.format("SELECT MAX(codigo) AS rowcount FROM agenda;");
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT COUNT(*) AS rowcount FROM agenda;");
+            ResultSet rs = st.executeQuery(consulta);
             if (rs.next()) {
                 numRegistros = rs.getInt(1);
             }
@@ -233,7 +234,7 @@ public class BDUtil {
         String datosContacto = "";
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM agenda WHERE cod =" + codigo + ";");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM agenda WHERE codigo =" + codigo + ";");
             while (rs.next()) {
                 datosContacto = rs.getInt(1) + "\t - " + rs.getString(2) + "\t - " + rs.getString(3);
             }
@@ -257,7 +258,7 @@ public class BDUtil {
      */
     public static Contacto consultaCodigoContacto(Connection con, int codigo, boolean control) {
         Contacto dummy = null;
-        String consulta = String.format("SELECT * FROM agenda WHERE cod=%d;", codigo);
+        String consulta = String.format("SELECT * FROM agenda WHERE codigo=%d;", codigo);
         control = false;
         try {
             Statement stmt = con.createStatement();
@@ -282,8 +283,9 @@ public class BDUtil {
      */
     public static void pulsarTecla(Scanner entradaDatos, char teclaAPulsar) {
         char tecla;
+        String texto = String.format("pulsa %s y presiona ENTER para volver al menú", teclaAPulsar);
         do {
-            System.out.println("(pulsa " + teclaAPulsar + " y presiona Enter para volver al menú)");
+            System.out.println(texto);
             tecla = entradaDatos.next().toUpperCase().charAt(0);
         } while (tecla != teclaAPulsar);
     }
@@ -310,7 +312,7 @@ public class BDUtil {
      */
     public static boolean existeCodigo(Connection con, int codigo) {
         boolean encontrado = false;
-        String consulta = String.format("SELECT cod FROM agenda WHERE cod=%d;", codigo);
+        String consulta = String.format("SELECT codigo FROM agenda WHERE codigo=%d;", codigo);
         try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(consulta);
