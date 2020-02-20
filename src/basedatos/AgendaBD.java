@@ -160,6 +160,26 @@ public class AgendaBD {
         return contacto;
     }
 
+    public static boolean menuConsulta(Scanner entrada, Connection con){
+        boolean resultado = false;
+        Utilidades.limpiarPantalla();
+        entrada.nextLine();
+        System.out.println("################################################################################");
+        System.out.println("##                 JavAgendaDB - Listado Completo de Contactos                ##");
+        System.out.println("################################################################################");
+        char tecla;
+        do {
+            System.out.print("¿Deseas ordenar los contactos por nombre? (S/N): ");
+            tecla = entrada.next().toUpperCase().charAt(0);
+        } while (tecla != 'S' && tecla != 'N');
+        if (tecla == 'S') {
+            resultado = true;
+        } else {
+            resultado = false;
+        }
+        return resultado;
+    }
+
     /**
      * Método para mostrar el menú de buscar contactos Sólo los muestra por
      * pantalla.
@@ -272,7 +292,12 @@ public class AgendaBD {
                     menuBuscar(entrada, con);
                     break;
                 case 5: // Ver los contactos de la agenda
-                    listaContactos = BDUtil.consulta(con);
+                    boolean tipoConsulta = menuConsulta(entrada, con);
+                    if (tipoConsulta){
+                        listaContactos = BDUtil.consulta(con, true);
+                    } else {
+                        listaContactos = BDUtil.consulta(con, false);
+                    }
                     // mostrar los contactos en plan listado
                     for (int i = 0; i < listaContactos.size(); i++) {
                         System.out.println(listaContactos.get(i).getDatos());

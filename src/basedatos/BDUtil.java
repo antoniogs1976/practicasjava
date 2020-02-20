@@ -26,9 +26,10 @@ public class BDUtil {
     public static Connection conexion() {
         Connection con = null;
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
-        String usuario = "F5DQRpnXfM";
-        String password = "LzbcX6JCLx"; // <--------- INSERTAR AQUÍ EL PASSWORD
+        //String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
+        String url = "jdbc:mysql://db4free.net:3306/programaciontemp";
+        String usuario = ""; // <--------- INSERTAR AQUÍ EL USUARIO
+        String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url, usuario, password);
@@ -127,12 +128,18 @@ public class BDUtil {
      * @param con Connection sobre la que realizar la consulta
      * @return ArrayList<Contacto> con la lista de contactos
      */
-    public static ArrayList<Contacto> consulta(Connection con) {
+    public static ArrayList<Contacto> consulta(Connection con, boolean ordenada) {
         ArrayList<Contacto> listado = new ArrayList<>();
         Contacto dummy = null;
+        String consulta;
+        if (ordenada){
+            consulta = "SELECT * FROM agenda ORDER BY nombre ASC;";
+        } else {
+            consulta = "SELECT * FROM agenda;";
+        }
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM agenda;");
+            ResultSet rs = stmt.executeQuery(consulta);
             while (rs.next()) {
                 dummy = new Contacto(rs.getInt(1), rs.getString(2), rs.getString(3));
                 listado.add(dummy);
@@ -203,7 +210,7 @@ public class BDUtil {
     public static ArrayList<Contacto> buscarContacto(Connection con, String cadenaABuscar) {
         ArrayList<Contacto> listado = new ArrayList<>();
         String str = "%" + cadenaABuscar + "%";
-        String consulta = String.format("SELECT * FROM agenda WHERE (nombre LIKE '%s') OR (telefono like '%s');", str,
+        String consulta = String.format("SELECT * FROM agenda WHERE (nombre LIKE '%s') OR (telefono like '%s') ORDER BY nombre ASC;", str,
                 str);
         Contacto dummy = null;
         try {

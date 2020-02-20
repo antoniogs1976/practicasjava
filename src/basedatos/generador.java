@@ -17,9 +17,15 @@ public class generador {
     public static void main(String[] args) {
         Random alea = new Random();
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
-        String usuario = "F5DQRpnXfM";
-        String password = "LzbcX6JCLx"; // <--------- INSERTAR AQUÍ EL PASSWORD
+        //String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
+        //String usuario = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
+        //String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
+
+        String url = "jdbc:mysql://db4free.net:3306/programaciontemp";
+        String usuario = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
+        String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
+
+        
         final String letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int cosa = 0;
         int contador = 1;
