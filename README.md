@@ -1,2 +1,2 @@
 # practicasjava
-Practicas java del curso de "Programación de Sistemas Informáticos"
+Practicas java del "Certificado de Profesionalidad" de "Programación de Sistemas Informáticos" de Nivel 3
