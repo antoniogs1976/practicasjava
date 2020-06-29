@@ -1,7 +1,6 @@
 package miscosas;
 
 import java.util.Scanner;
-import miscosas.MisClases;
 
 /**
  * Menu01

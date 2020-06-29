@@ -19,9 +19,9 @@ public class select3 {
         //String url = "jdbc:mysql://localhost:3306/practicas?serverTimezone=UTC";
         // la linea anterior es por si da fallo de timezone. Para corregirlo de forma global
         // añadir la opción default-time-zone=+00:00 en my.ini/my.cnf
-        String url = "jdbc:mysql://localhost:3306/practicas";
-        String usuario = "root";
-        String password = "123456"; // <---- INSERTAR AQUÍ EL PASSWORD
+        String url = "jdbc:mysql://"; // <----- INSERTAR AQUÍ LA URL
+		String usuario = ""; // <----- INSERTAR AQUÍ EL PASSWORD
+		String password = ""; // <----- INSERTAR AQUÍ EL PASSWORD
         try {
             // 1.- registrar el Driver JDBC
             System.out.println("Conectando...");

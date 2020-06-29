@@ -26,8 +26,7 @@ public class BDUtil {
     public static Connection conexion() {
         Connection con = null;
         String driver = "com.mysql.cj.jdbc.Driver";
-        //String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
-        String url = "jdbc:mysql://db4free.net:3306/programaciontemp";
+        String url = "jdbc:mysql://"; // <---------- INSERTAR AQUÍ LA URL
         String usuario = ""; // <--------- INSERTAR AQUÍ EL USUARIO
         String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
         try {

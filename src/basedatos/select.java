@@ -16,9 +16,9 @@ public class select {
 
     public static void main(String[] args) {
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
-        String usuario = "F5DQRpnXfM";
-        String password = ""; // <---- INSERTAR AQUÍ EL PASSWORD
+        String url = "jdbc:mysql://"; // <----- INSERTAR AQUÍ LA URL
+		String usuario = ""; // <----- INSERTAR AQUÍ EL PASSWORD
+		String password = ""; // <----- INSERTAR AQUÍ EL PASSWORD
         try {
             // 1.- registrar el Driver JDBC
             System.out.println("Conectando...");

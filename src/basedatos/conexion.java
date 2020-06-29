@@ -10,15 +10,9 @@ public class conexion {
 
     public static void main(String[] args) {
         String driver = "com.mysql.cj.jdbc.Driver";
-        // para conectar a remotemysql (cuando deje de fallar...)
-        //String url = "jdbc:mysql://remotemysql.com:3306/F5DQRpnXfM";
-        //String usuario = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
-        //String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
-
-        // para conectar a db4free.net como alternativa
-        String url = "jdbc:mysql://db4free.net:3306/programaciontemp";
-        String usuario = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
-        String password = ""; // <--------- INSERTAR AQUÍ EL PASSWORD
+		String url = "jdbc:mysql://"; // <----- INSERTAR AQUÍ LA URL
+		String usuario = ""; // <----- INSERTAR AQUÍ EL PASSWORD
+		String password = ""; // <----- INSERTAR AQUÍ EL PASSWORD
         try {
             System.out.println("Conectando...");
             Class.forName(driver);
