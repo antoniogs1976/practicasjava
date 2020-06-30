@@ -15,7 +15,7 @@ public class ConexionBBDD {
         miscosas.MisClases.limpiarPantalla();
         try {
             Class.forName(driver);
-        // Obtener conexión
+            // Obtener conexión
             conexion = DriverManager.getConnection(url, usuario, password);
             if (conexion != null){
                 System.out.println("conectado");

@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Consulta",
+            "request": "launch",
+            "mainClass": "examen.Consulta",
+            "projectName": "practicasjava"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Conexion2",
+            "request": "launch",
+            "mainClass": "examen.Conexion2",
+            "projectName": "practicasjava"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Conexion2",
+            "request": "launch",
+            "mainClass": "Conexion2",
+            "projectName": "examen"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - AgendaBD",
             "request": "launch",
             "mainClass": "basedatos.AgendaBD",
