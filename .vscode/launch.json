@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Consulta3",
+            "request": "launch",
+            "mainClass": "examen.Consulta3",
+            "projectName": "practicasjava"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Consulta",
             "request": "launch",
             "mainClass": "examen.Consulta",

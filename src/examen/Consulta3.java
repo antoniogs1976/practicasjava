@@ -26,7 +26,10 @@ public class Consulta3 {
         ArrayList<Contacto> resultado = LibreriaBD.consulta(conexion, false);
         for (int i=0;i<resultado.size();i++){
             System.out.println(resultado.get(i).getDatos());
-        } 
+        }
+
+        // Mostrar el número de contactos en la agenda ----------------------------------
+        System.out.println(LibreriaBD.totalContactos(conexion));
 
         // cerrar la conexión -----------------------------------------------------------
         LibreriaBD.cerrarConexion(conexion);

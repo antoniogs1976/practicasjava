@@ -9,10 +9,11 @@ import java.util.ArrayList;
 public class LibreriaBD {
 
     // ==================================================================================
-    // Métodos varios ===================================================================
+    // Métodos varios
+    // ===================================================================
     // ==================================================================================
 
-     /**
+    /**
      * Método para mostrar los errores de las excepciones
      * 
      * @param excepcion Exception a mostrar los errores
@@ -23,9 +24,10 @@ public class LibreriaBD {
     }
 
     // ==================================================================================
-    // Métodos para la conexión/desconexión de la base de datos =========================
+    // Métodos para la conexión/desconexión de la base de datos
+    // =========================
     // ==================================================================================
-    
+
     /**
      * Método para conectar a la base de datos
      * 
@@ -62,23 +64,25 @@ public class LibreriaBD {
     }
 
     // ==================================================================================
-    // Métodos para la gestión de los datos de la base de datos =========================
+    // Métodos para la gestión de los datos de la base de datos
+    // =========================
     // ==================================================================================
-    
+
     /**
      * Método para hacer consultas a la Base de datos.<br>
-     * Devuelve un <b>ArrayList</b> con objetos <b>contacto</b> con los datos
-     * de los contactos en la base de datos.
+     * Devuelve un <b>ArrayList</b> con objetos <b>contacto</b> con los datos de los
+     * contactos en la base de datos.
      * 
-     * @param con <code><b>Connection</b></code> sobre la que hacer la consulta
-     * @param ordenada <code><b>Boolean</b></code> para ordenar por nombre la consulta
+     * @param con      <code><b>Connection</b></code> sobre la que hacer la consulta
+     * @param ordenada <code><b>Boolean</b></code> para ordenar por nombre la
+     *                 consulta
      * @return ArrayList<Contacto> con los resultados
      */
     public static ArrayList<Contacto> consulta(Connection con, boolean ordenada) {
         ArrayList<Contacto> listado = new ArrayList<>();
         Contacto contacto = null;
         String consulta;
-        if (ordenada){
+        if (ordenada) {
             consulta = "SELECT * FROM agenda ORDER BY nombre ASC;";
         } else {
             consulta = "SELECT * FROM agenda;";
@@ -96,10 +100,10 @@ public class LibreriaBD {
         return listado;
     }
 
-     /**
+    /**
      * Método para dar de alta un contacto en la agenda
      * 
-     * @param con <code>Connection</code> sobre la que realizar la consulta
+     * @param con      <code>Connection</code> sobre la que realizar la consulta
      * @param contacto Contacto con los datos del contacto
      */
     public static boolean alta(Connection con, Contacto contacto) {
@@ -108,7 +112,7 @@ public class LibreriaBD {
                 contacto.getCodigo(), contacto.getNombre(), contacto.getTelefono());
         try {
             Statement stmt = con.createStatement();
-            if (stmt.executeUpdate(consulta) != 0){
+            if (stmt.executeUpdate(consulta) != 0) {
                 resultado = true;
             }
         } catch (Exception e) {
@@ -117,17 +121,19 @@ public class LibreriaBD {
         return resultado;
     }
 
-     /**
+    /**
      * Método que devuelve el número de filas en una tabla
      * 
      * @param con Connection sobre la que realizar la consulta
      * @return entero con el número de filas/registros
      */
-    public static int siguienteCodigo (Connection con) {
+    public static int siguienteCodigo(Connection con) {
         int numRegistros = 0;
         String consulta = String.format("SELECT MAX(codigo) FROM agenda;");
-        // se puede asignar un "alias" a la hora de hacer la consulta para acceder a ese campo
-        // String consulta = String.format("SELECT MAX(codigo) AS NombreQueQueramos FROM agenda;");
+        // se puede asignar un "alias" a la hora de hacer la consulta para acceder a ese
+        // campo
+        // String consulta = String.format("SELECT MAX(codigo) AS NombreQueQueramos FROM
+        // agenda;");
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(consulta);
@@ -143,4 +149,20 @@ public class LibreriaBD {
         return numRegistros + 1;
     }
 
+    public static String totalContactos(Connection con) {
+        int total = 0;
+        String consulta = String.format("SELECT COUNT(codigo) FROM agenda");
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(consulta);
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+            rs.close();
+        } catch (Exception e) {
+            mostrarError(e);
+        }
+        String resultado = "Hay un total de " + total + " contactos en la agenda.";
+        return resultado;
+    }
 }
