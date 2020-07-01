@@ -38,6 +38,8 @@ public class MisClases {
             else
                 Runtime.getRuntime().exec("clear");
         } catch (IOException | InterruptedException ex) {
+            System.err.println("* Error: " + ex);
+            ex.printStackTrace();
         }
     }
 

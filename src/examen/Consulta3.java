@@ -1,14 +1,13 @@
 package examen;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 
 // Se conecta a la BD utilizando el método "conectar" de "LibreriaBD.java"
-// Y hace una consulta a la tabla "agenda"
+// hace un inserto de datos en la agenda desde "LiberiaDB.java"
+// y hace una consulta a la tabla "agenda" desde "LibreriaDB.java"
 
-public class Consulta {
+public class Consulta3 {
     public static void main(String[] args) {
         // Limpiar la consola para ver las cosas mejor
         miscosas.MisClases.limpiarPantalla();
@@ -19,18 +18,15 @@ public class Consulta {
             System.out.println("Conexión establecida.");
         }
 
-        // Realizar la consulta ---------------------------------------------------------
-        Statement stmt;
-        try {
-            stmt = conexion.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from agenda");
-            while (rs.next()){
-                System.out.println(rs.getString(1) + " - " + rs.getString(2) +" - " + rs.getString(3));
-            }
-        } catch (SQLException e1) {
-            System.err.println("Error en la sentencia SQL: " + e1);
-            e1.printStackTrace();
-        }
+        // Insertar un contacto en la agenda --------------------------------------------
+        Contacto contacto = new Contacto(LibreriaBD.siguienteCodigo(conexion), "Dato Aleatorio", "123456789");
+        LibreriaBD.alta(conexion, contacto);
+
+        // Realizar la consulta desde la Librería ---------------------------------------
+        ArrayList<Contacto> resultado = LibreriaBD.consulta(conexion, false);
+        for (int i=0;i<resultado.size();i++){
+            System.out.println(resultado.get(i).getDatos());
+        } 
 
         // cerrar la conexión -----------------------------------------------------------
         LibreriaBD.cerrarConexion(conexion);
