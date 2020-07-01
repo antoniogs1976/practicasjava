@@ -34,7 +34,9 @@ public class LibreriaBD {
     public static Connection conectar() {
         Connection con = null;
         String driver = "com.mysql.cj.jdbc.Driver";
-        
+        String url = "jdbc:mysql://"; // <----- INSERTAR AQUÍ LA URL
+        String usuario = ""; // <----- INSERTAR AQUÍ EL USUARIO
+        String password = ""; // <----- INSERTAR AQUÍ EL PASSWORD
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url, usuario, password);
