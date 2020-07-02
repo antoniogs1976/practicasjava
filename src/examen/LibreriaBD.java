@@ -10,7 +10,6 @@ public class LibreriaBD {
 
     // ==================================================================================
     // Métodos varios
-    // ===================================================================
     // ==================================================================================
 
     /**
@@ -25,7 +24,6 @@ public class LibreriaBD {
 
     // ==================================================================================
     // Métodos para la conexión/desconexión de la base de datos
-    // =========================
     // ==================================================================================
 
     /**
@@ -65,7 +63,6 @@ public class LibreriaBD {
 
     // ==================================================================================
     // Métodos para la gestión de los datos de la base de datos
-    // =========================
     // ==================================================================================
 
     /**
@@ -149,7 +146,7 @@ public class LibreriaBD {
         return numRegistros + 1;
     }
 
-    public static String totalContactos(Connection con) {
+    public static int totalContactos(Connection con) {
         int total = 0;
         String consulta = String.format("SELECT COUNT(codigo) FROM agenda");
         try {
@@ -162,7 +159,6 @@ public class LibreriaBD {
         } catch (Exception e) {
             mostrarError(e);
         }
-        String resultado = "Hay un total de " + total + " contactos en la agenda.";
-        return resultado;
+        return total;
     }
 }

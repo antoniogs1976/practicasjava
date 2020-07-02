@@ -29,7 +29,7 @@ public class Consulta3 {
         }
 
         // Mostrar el número de contactos en la agenda ----------------------------------
-        System.out.println(LibreriaBD.totalContactos(conexion));
+        System.out.println("Hay un total de " + LibreriaBD.totalContactos(conexion) + " contactos en la agenda");
 
         // cerrar la conexión -----------------------------------------------------------
         LibreriaBD.cerrarConexion(conexion);
